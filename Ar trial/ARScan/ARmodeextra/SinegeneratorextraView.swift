@@ -13,23 +13,6 @@ struct SinegeneratorextraView: View {
     @StateObject var vm = ARsinegeneratormodel()
     @State var testonly:CGFloat = 100
     
-    //View gestures
-    var AsyncImageDraggesture:some Gesture{
-        DragGesture()
-                .onChanged { value in
-                    if value.translation.height > 0 {
-                        vm.imageyoffset=value.translation.height
-                    }
-                }
-                .onEnded { value in
-                    withAnimation(.spring()) {
-                        if value.translation.height > 20 {
-                            vm.imageforward()
-                        }
-                        vm.imageyoffset=0
-                    }
-                }
-    }
 
     var body: some View {
         GeometryReader{geometry in
@@ -57,14 +40,7 @@ struct SinegeneratorextraView: View {
                             InputbackgroundView()
                         )
                         .offset(y: -geometry.size.height*Usermodel.Circuitupdatetabheightratio)
-                        .gesture(
-                            DragGesture()
-                                    .onEnded { value in
-                                        if value.translation.height > 20 {
-                                            vm.inputbackward()
-                                        }
-                                    }
-                        )
+                        .gesture(vm.InputAreaDraggesture())
                         
                 }.frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .bottomTrailing)
             case .image:
@@ -78,26 +54,8 @@ struct SinegeneratorextraView: View {
                         }
                         Divider()
                         if let imageurl=vm.Simulationurl{
-                            AsyncImage(url: imageurl) { phase in
-                                switch phase {
-                                case .empty:
-                                    ZStack{
-                                        ProgressView()
-                                    }.frame(width: geometry.size.width/4*vm.imagezoomratio, height: geometry.size.width/4*vm.imagezoomratio)
-                                case .success(let returnedImage):
-                                    returnedImage
-                                        .resizable()
-                                        .aspectRatio(nil, contentMode: .fit)
-                                        .cornerRadius(3)
-                                case .failure:
-                                    ZStack{
-                                        Image(systemName: "questionmark")
-                                            .font(.headline)
-                                    }.frame(width: geometry.size.width/4, height: geometry.size.width/4)
-                                default:
-                                    Image(systemName: "questionmark")
-                                        .font(.headline)
-                                }
+                            AsyncImage(url: imageurl) {
+                                AsyncImageContent(phase: $0, geometry: geometry)
                             }
                         }
                     }.frame(width: geometry.size.width/2*vm.imagezoomratio)
@@ -107,9 +65,7 @@ struct SinegeneratorextraView: View {
                         )
                         .offset(y:-geometry.size.height*Usermodel.Circuitupdatetabheightratio+vm.imageyoffset)
                     //.frame(maxWidth: geometry.size.width*0.9)
-                        .gesture(
-                            AsyncImageDraggesture
-                        )
+                        .gesture(vm.AsyncImageDraggesture())
                 }.frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .bottomTrailing)
 
                 
@@ -119,3 +75,30 @@ struct SinegeneratorextraView: View {
         
     }
 }
+
+extension SinegeneratorextraView{
+    @ViewBuilder
+    func AsyncImageContent(phase:AsyncImagePhase,geometry:GeometryProxy)->some View{
+        switch phase {
+        case .empty:
+            ZStack{
+                ProgressView()
+            }.frame(width: geometry.size.width/4*vm.imagezoomratio, height: geometry.size.width/4*vm.imagezoomratio)
+        case .success(let returnedImage):
+            returnedImage
+                .resizable()
+                .aspectRatio(nil, contentMode: .fit)
+                .cornerRadius(3)
+        case .failure:
+            ZStack{
+                Image(systemName: "questionmark")
+                    .font(.headline)
+            }.frame(width: geometry.size.width/4, height: geometry.size.width/4)
+        default:
+            Image(systemName: "questionmark")
+                .font(.headline)
+        }
+
+    }
+}
+

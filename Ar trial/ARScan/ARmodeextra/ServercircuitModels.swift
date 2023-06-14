@@ -71,6 +71,36 @@ class ServercircuitViewModel:ObservableObject{
     func Valuelegal()->Bool{
         return true
     }
+    
+    /// AsyncImage Drag gesture
+    func AsyncImageDraggesture()->some Gesture{
+        DragGesture()
+                .onChanged { [weak self]value in
+                    if value.translation.height > 0 {
+                        self?.imageyoffset=value.translation.height
+                    }
+                }
+                .onEnded { [weak self]value in
+                    withAnimation(.spring()) {
+                        if value.translation.height > 20 {
+                            self?.imageforward()
+                        }
+                        self?.imageyoffset=0
+                    }
+                }
+    }
+    
+    /// Input area Drag gesture
+    func InputAreaDraggesture()->some Gesture{
+        DragGesture()
+                .onEnded { [weak self]value in
+                    if value.translation.height > 20 {
+                        self?.inputbackward()
+                    }
+                }
+
+    }
+
 }
 
 //MARK: ARsquarewavemodel

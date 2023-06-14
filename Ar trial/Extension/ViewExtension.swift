@@ -22,7 +22,6 @@ extension View{
         }
     }
     
-//    func scs
 }
 
 

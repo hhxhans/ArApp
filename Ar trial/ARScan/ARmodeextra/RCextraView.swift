@@ -191,7 +191,7 @@ struct RCextraView: View {
                     Alert(title: Text(Alerttext), primaryButton: .destructive(Text("Cancel").foregroundColor(.red)) {inputpresent=true}, secondaryButton: .default(valueappropriate(pulsepresent: pulsepresent,sinepresent: sinepresent) ? Text("OK") : Text("Continue Anyway")){chartpresent=true})
                     
                 }
-                .onChange(of: geometry.size) { value in
+                .onChange(of: geometry.size) {
                     guard (sinepresent || pulsepresent) && chartpresent else {return}
                     sinepresent=false
                     pulsepresent=false

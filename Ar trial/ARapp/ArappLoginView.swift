@@ -94,10 +94,9 @@ struct ArappLoginView: View {
                 Spacer()
             }
         }
-        .blurredSheet(Usermodel.blurredShapestyle, show: $Usermodel.UserSignup){
-
-        }content: {
+        .sheet(isPresented: $Usermodel.UserSignup){
             ARappSignupView()
+                .presentationBackground(Usermodel.blurredShapestyle)
         }
         
         .alert(isPresented: $Usermodel.loginfailalert) {

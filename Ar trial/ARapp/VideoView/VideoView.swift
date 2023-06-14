@@ -77,7 +77,7 @@ struct VideoView: View {
 //                            }
 //                            .frame(width: geometry.size.width)
 //                    }
-                }.onChange(of: progress){ _ in
+                }.onChange(of: progress){
                     if isdragging {
                         if timeout != nil{
                             timeout?.cancel()
@@ -85,8 +85,8 @@ struct VideoView: View {
                     }
                     
                 }
-                .onChange(of: isdragging) { value in
-                    if !value{
+                .onChange(of: isdragging) {
+                    if !$1{
                         let draggedprogress=progress
                         if let currentPlayerItem=player?.currentItem{
                             let totalDuration=currentPlayerItem.duration.seconds

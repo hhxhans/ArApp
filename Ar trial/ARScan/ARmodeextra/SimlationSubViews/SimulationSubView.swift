@@ -110,6 +110,7 @@ struct SimulationImagebackgroundView: View {
 }
 
 struct SimulationImageupperLabel: View {
+    @EnvironmentObject var Usermodel:Appusermodel
     let RefreshButtondisable:Bool
     let imagezoom:Bool
     let backwardButtonaction:()->Void
@@ -133,6 +134,14 @@ struct SimulationImageupperLabel: View {
                     .font(.title2)
             }
             .padding(.trailing,5)
+            if let key=Usermodel.PhotoCachekeys.first?.key,
+               let image=Usermodel.manager.get(key: key){
+                let shareimage=Image(uiImage: image)
+                ShareLink(item: shareimage, preview: SharePreview("",image:shareimage)) {
+                    Image(systemName: "square.and.arrow.up")
+                        .font(.title2)
+                }
+            }
             Spacer()
         }
     }

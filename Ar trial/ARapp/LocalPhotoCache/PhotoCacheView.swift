@@ -87,6 +87,20 @@ struct PhotoCacheDetailView:View{
         }
         self.mode=mode
     }
+    
+    var PhotoCacheDetailViewToolbarContent:some ToolbarContent{
+        let shareimage=Image(uiImage: uiimage)
+        return Group{
+            ToolbarItem(placement: .topBarTrailing) {
+                ShareLink(item: shareimage, preview: SharePreview("",image:shareimage)) {
+                    Image(systemName: "square.and.arrow.up")
+                        .font(.title2)
+                }
+
+            }
+        }
+    }
+    
     var body: some View {
         HStack{
             Image(uiImage: uiimage)
@@ -96,6 +110,6 @@ struct PhotoCacheDetailView:View{
             Spacer()
         }
         .navigationTitle(mode.RawValuebyLanguage(Language: Usermodel.Language))
-
+        .toolbar{PhotoCacheDetailViewToolbarContent}
     }
 }

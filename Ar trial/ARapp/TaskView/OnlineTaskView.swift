@@ -16,7 +16,7 @@ struct OnlineTaskView: View {
     //MARK: OnlineTaskViewToolbar
     var OnlineTaskViewToolbar:some ToolbarContent{
         Group{
-            ToolbarItem(placement: .navigationBarTrailing) {
+            ToolbarItem(placement: .topBarTrailing) {
                 HStack{
                     if Usermodel.user.authority>0{
                         Button{
@@ -84,10 +84,10 @@ struct OnlineTaskView: View {
                                         .onTapGesture {
                                             OnlineTaskmodel.TaskDetaildisplay[index].toggle()
                                         }
-                                        .blurredSheet(Usermodel.blurredShapestyle, show: $OnlineTaskmodel.TaskDetaildisplay[index]) {
-                                            
-                                        } content: {
+                                        .sheet(isPresented: $OnlineTaskmodel.TaskDetaildisplay[index]) {
                                             TaskDetailView(OnlineTaskmodel: OnlineTaskmodel, Taskindex: index)
+                                                .presentationDetents([.medium, .large])
+                                                .presentationBackground(Usermodel.blurredShapestyle)
                                         }
                                     Spacer()
                                 }
@@ -97,17 +97,15 @@ struct OnlineTaskView: View {
                     }
                 }
             }.frame(maxWidth: .infinity,maxHeight: .infinity)
-                .blurredSheet(.init(.ultraThinMaterial), show: $OnlineTaskmodel.TaskAddingdisplay) {
-                    
-                } content: {
-                    Usermodel.Language ? OnlineTaskAddingView(
+                .sheet(isPresented: $OnlineTaskmodel.TaskAddingdisplay) {
+                    (Usermodel.Language ? OnlineTaskAddingView(
                         OnlineTaskmodel: OnlineTaskmodel,
                         Tasktitle: "任务标题",
                         Taskdescription: "任务描述"
                     ) :
-                    OnlineTaskAddingView(OnlineTaskmodel: OnlineTaskmodel)
+                    OnlineTaskAddingView(OnlineTaskmodel: OnlineTaskmodel))                        .presentationDetents([.medium, .large])
+                        .presentationBackground(Usermodel.blurredShapestyle)
                 }
-                //.background(RoundedRectangle(cornerRadius: 5).stroke(Color.primary))
         }
         .toolbar{OnlineTaskViewToolbar}
         .onAppear{

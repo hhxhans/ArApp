@@ -76,10 +76,12 @@ class ARappARpartmodel:ObservableObject{
 
     //MARK: initiate
     init() {
-        scanmodeindex=[.Squarewavegenerator:0,
-                       .SquarewaveDRgenerator:1,
-                       .Secondorder:2,.Sequence:3,
-                       .Proportional:4
+        scanmodeindex=[
+            .Squarewavegenerator:0,
+            .SquarewaveDRgenerator:1,
+            .Secondorder:2,
+            .Sequence:3,
+            .Proportional:4
         ]
         SquarewaveGeneratorAnchor=try! Squarewave.loadBox()
         SquarewaveDRGeneratorAnchor=try! SquarewaveDR.loadBox()
@@ -300,7 +302,6 @@ class ARappARpartmodel:ObservableObject{
     }
     
     //MARK: static functions
-    
     
     
     

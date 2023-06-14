@@ -29,48 +29,6 @@ struct ARscanView:View{
     @StateObject var Sequencemodel:Sequencegeneratormodel=Sequencegeneratormodel()
     @StateObject var Proportionalmodel:Proportionalcircuitmodel=Proportionalcircuitmodel()
     
-    //MARK: AR toolbar Content
-    func ARtoolbarContent(geometrysize:CGSize)->some ToolbarContent{
-        Group{
-            ToolbarItem(placement:.navigationBarLeading) {
-                HStack{
-                    switch extraviewmode {
-                    case .Secondorder: Text("")
-//                        Button {
-//                            ARappARpart.SecondorderfilterAnchor.notifications.playaudio.post()
-//                        } label: {
-//                            Image(systemName: "music.note")
-//                                .font(.system(size: geometrysize.height*0.03, weight: .light))
-//
-//                        }
-                    default:Text("")
-                    }
-
-                }
-                .font(.title2)
-            }
-
-            ToolbarItem(placement:.navigationBarTrailing) {
-                HStack(spacing: .zero){
-                    Button {
-                        showmodeinformation=true
-                    } label: {
-                        Image(systemName: "info.circle")
-                            .font(.system(size: geometrysize.height*0.03, weight: .light))
-                    }
-                    Button {
-                        withAnimation(.easeInOut(duration: 0.3)) {
-                            showcircuitimage.toggle()
-                        }
-                    } label: {
-                        Image(systemName: "photo.circle")
-                            .font(.system(size: geometrysize.height*0.03, weight: .light))
-                    }
-                }
-                .font(.title2)
-            }
-        }
-    }
 
     //MARK: body
     var body: some View{
@@ -131,27 +89,53 @@ extension ARscanView{
             case .Secondorder:SecondorderfilterextraView()
             case .Sequence:SequencegeneratorextraView(appmodel: ARappARpart, Sequencemodel: Sequencemodel)
             case .Proportional:ProportionalextraView(appmodel: ARappARpart, proportionalmodel: Proportionalmodel)
-            default:ZStack{Spacer()}
+            default:EmptyView()
             }
         }
     }
-    /// Button to show mode information alert
-    private var topleadingbuttons:some View{
-        ZStack{
-            VStack{
-                Button {
-                    showmodeinformation=true
-                } label: {
-                        Image(systemName: "info.circle")
-                        .foregroundColor(Color.accentColor)
-                            .font(.title)
-                }
-            }
-        }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-    }
     
+    //MARK: AR toolbar Content
+    func ARtoolbarContent(geometrysize:CGSize)->some ToolbarContent{
+        Group{
+            ToolbarItem(placement:.topBarLeading) {
+                HStack{
+                    switch extraviewmode {
+                    case .Secondorder: Text("")
+//                        Button {
+//                            ARappARpart.SecondorderfilterAnchor.notifications.playaudio.post()
+//                        } label: {
+//                            Image(systemName: "music.note")
+//                                .font(.system(size: geometrysize.height*0.03, weight: .light))
+//
+//                        }
+                    default:Text("")
+                    }
 
-    
+                }
+                .font(.title2)
+            }
+
+            ToolbarItem(placement:.topBarTrailing) {
+                HStack(spacing: .zero){
+                    Button {
+                        showmodeinformation=true
+                    } label: {
+                        Image(systemName: "info.circle")
+                            .font(.system(size: geometrysize.height*0.03, weight: .light))
+                    }
+                    Button {
+                        withAnimation(.easeInOut(duration: 0.3)) {
+                            showcircuitimage.toggle()
+                        }
+                    } label: {
+                        Image(systemName: "photo.circle")
+                            .font(.system(size: geometrysize.height*0.03, weight: .light))
+                    }
+                }
+                .font(.title2)
+            }
+        }
+    }
 
 }
 

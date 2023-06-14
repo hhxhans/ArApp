@@ -53,8 +53,8 @@ struct ARappMaterialview: View{
                                             .frame(height:1)
                                     }
                                 }
-                                .onChange(of: scrolltoindex){ value in
-                                    appmodel.scrolltoindex(proxy: proxy, chapter: chapter, value: value)
+                                .onChange(of: scrolltoindex){
+                                    appmodel.scrolltoindex(proxy: proxy, chapter: chapter, value: $1)
                                 }
                                 .onAppear{
                                     appmodel.appearscrolltoindex(proxy: proxy, chapter: chapter)
@@ -167,9 +167,9 @@ struct ARappMaterialview: View{
 //                }
 
         }
-        .onChange(of: appmodel.imageprogress[chapter]){ value in
-            UserDefaults.standard.set(value, forKey: "chapterprogress\(chapter)")
-            scrolltoindex=value
+        .onChange(of: appmodel.imageprogress[chapter]){
+            UserDefaults.standard.set($1, forKey: "chapterprogress\(chapter)")
+            scrolltoindex=$1
         }
 //        .navigationBarItems(leading:
 //                                Button{

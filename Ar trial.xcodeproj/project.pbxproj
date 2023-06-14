@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -119,7 +119,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A66016922A162B3200AE96C8 /* SquarewaveDR.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = SquarewaveDR.rcproject; sourceTree = "<group>"; };
+		A66016922A162B3200AE96C8 /* SquarewaveDR.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; name = SquarewaveDR.rcproject; path = "Ar trial/RCProjects/SquarewaveDR.rcproject"; sourceTree = SOURCE_ROOT; };
 		A66016942A163EB800AE96C8 /* ServercircuitModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServercircuitModels.swift; sourceTree = "<group>"; };
 		A66016962A1640F500AE96C8 /* SinegeneratorextraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinegeneratorextraView.swift; sourceTree = "<group>"; };
 		A66016982A16420000AE96C8 /* Timer555triggerextraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer555triggerextraView.swift; sourceTree = "<group>"; };
@@ -129,7 +129,7 @@
 		C72630E82A29E57E003035FE /* PhotoFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFileManager.swift; sourceTree = "<group>"; };
 		C72630EA2A29FA26003035FE /* PhotoCacheView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCacheView.swift; sourceTree = "<group>"; };
 		C738CB1A29D066C2002A5F1C /* ARUpdatetabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARUpdatetabView.swift; sourceTree = "<group>"; };
-		C73D2D3129CF18510068B4DA /* RC.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = RC.rcproject; sourceTree = "<group>"; };
+		C73D2D3129CF18510068B4DA /* RC.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; name = RC.rcproject; path = "Ar trial/RCProjects/RC.rcproject"; sourceTree = SOURCE_ROOT; };
 		C743D08C29C878FD00F9EEB7 /* ARappMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARappMenuView.swift; sourceTree = "<group>"; };
 		C744D1F929FD2D650035F31A /* 幻灯片40.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "幻灯片40.PNG"; sourceTree = "<group>"; };
 		C744D1FA29FD2D650035F31A /* 幻灯片41.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "幻灯片41.PNG"; sourceTree = "<group>"; };
@@ -184,7 +184,7 @@
 		C7521BAD29FFAD07005AA58A /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		C755F1ED2A03A05800ABFD0B /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		C75AB1B62A1DFEEF00A1C694 /* VoltageregulatorextraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoltageregulatorextraView.swift; sourceTree = "<group>"; };
-		C75CD4862A08C8D500223E09 /* Secondorderfilter.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Secondorderfilter.rcproject; sourceTree = "<group>"; };
+		C75CD4862A08C8D500223E09 /* Secondorderfilter.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; name = Secondorderfilter.rcproject; path = "Ar trial/RCProjects/Secondorderfilter.rcproject"; sourceTree = SOURCE_ROOT; };
 		C764EAB629D6A98800ED6A2D /* ARViewContainer_extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer_extension.swift; sourceTree = "<group>"; };
 		C7677FC329DEF752000A2267 /* ExtraimageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtraimageView.swift; sourceTree = "<group>"; };
 		C767E09129D448A000E59311 /* ARAppdata.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ARAppdata.xcdatamodel; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 		C7734EB729D5494E00ED51DF /* Sequencegeneratormodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequencegeneratormodel.swift; sourceTree = "<group>"; };
 		C773A73E29C864B7006ABFA4 /* ARappMaterialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARappMaterialView.swift; sourceTree = "<group>"; };
 		C773ADD429EE912900693EF6 /* SquarewaveextraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquarewaveextraView.swift; sourceTree = "<group>"; };
-		C77B0DB729D2BFF30087DD44 /* Proportionalcircuit.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Proportionalcircuit.rcproject; sourceTree = "<group>"; };
+		C77B0DB729D2BFF30087DD44 /* Proportionalcircuit.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; name = Proportionalcircuit.rcproject; path = "Ar trial/RCProjects/Proportionalcircuit.rcproject"; sourceTree = SOURCE_ROOT; };
 		C78559B02A1120B300ABDF6E /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
 		C78559B22A1137F500ABDF6E /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		C78559B42A113D8900ABDF6E /* ARappSignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARappSignupView.swift; sourceTree = "<group>"; };
@@ -206,7 +206,7 @@
 		C7AA30CD29B874DE0080D7B8 /* Ar trial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ar trial.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7AA30D029B874DE0080D7B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7AA30D229B874DE0080D7B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		C7AA30D429B874DE0080D7B8 /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
+		C7AA30D429B874DE0080D7B8 /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; name = Experience.rcproject; path = "Ar trial/RCProjects/Experience.rcproject"; sourceTree = SOURCE_ROOT; };
 		C7AA30D629B874E30080D7B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7AA30D929B874E30080D7B8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C7AD256A29C2F038000B3B5C /* IndicatorPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorPoint.swift; sourceTree = "<group>"; };
@@ -219,10 +219,10 @@
 		C7AD257229C2F038000B3B5C /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		C7AD258329C2F109000B3B5C /* ARscanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARscanView.swift; sourceTree = "<group>"; };
 		C7AFF2CF29D412850080D1CA /* ProportionalextraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProportionalextraView.swift; sourceTree = "<group>"; };
-		C7C2484D2A1A08F800C842E0 /* Sequencegenerator.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Sequencegenerator.rcproject; sourceTree = "<group>"; };
+		C7C2484D2A1A08F800C842E0 /* Sequencegenerator.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; name = Sequencegenerator.rcproject; path = "Ar trial/RCProjects/Sequencegenerator.rcproject"; sourceTree = SOURCE_ROOT; };
 		C7C4FC2029D5ADDE00ED7DA2 /* SequencegeneratorextraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequencegeneratorextraView.swift; sourceTree = "<group>"; };
 		C7CF0C032A150ACE005F764D /* SimulationSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationSubView.swift; sourceTree = "<group>"; };
-		C7E417802A0E74B600A8EB9B /* Squarewave.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Squarewave.rcproject; sourceTree = "<group>"; };
+		C7E417802A0E74B600A8EB9B /* Squarewave.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; name = Squarewave.rcproject; path = "Ar trial/RCProjects/Squarewave.rcproject"; sourceTree = SOURCE_ROOT; };
 		C7E417832A0E87CD00A8EB9B /* OnlineTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineTaskView.swift; sourceTree = "<group>"; };
 		C7E417852A0E899300A8EB9B /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		C7E417872A0E8B6C00A8EB9B /* CalendarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarExtension.swift; sourceTree = "<group>"; };
@@ -242,6 +242,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5FA758442A3A07AE00412430 /* RCProjects */ = {
+			isa = PBXGroup;
+			children = (
+				C77B0DB729D2BFF30087DD44 /* Proportionalcircuit.rcproject */,
+				C7C2484D2A1A08F800C842E0 /* Sequencegenerator.rcproject */,
+				C73D2D3129CF18510068B4DA /* RC.rcproject */,
+				C75CD4862A08C8D500223E09 /* Secondorderfilter.rcproject */,
+				C7E417802A0E74B600A8EB9B /* Squarewave.rcproject */,
+				A66016922A162B3200AE96C8 /* SquarewaveDR.rcproject */,
+				C7AA30D429B874DE0080D7B8 /* Experience.rcproject */,
+			);
+			path = RCProjects;
+			sourceTree = "<group>";
+		};
 		C70D170E2A05037900389E0C /* LoginTextFieldAreaView */ = {
 			isa = PBXGroup;
 			children = (
@@ -396,13 +410,7 @@
 				C70D16EE2A04E9D400389E0C /* Usermodel.swift */,
 				C7AA30D629B874E30080D7B8 /* Assets.xcassets */,
 				C767E09029D448A000E59311 /* ARAppdata.xcdatamodeld */,
-				C77B0DB729D2BFF30087DD44 /* Proportionalcircuit.rcproject */,
-				C7C2484D2A1A08F800C842E0 /* Sequencegenerator.rcproject */,
-				C73D2D3129CF18510068B4DA /* RC.rcproject */,
-				C75CD4862A08C8D500223E09 /* Secondorderfilter.rcproject */,
-				C7E417802A0E74B600A8EB9B /* Squarewave.rcproject */,
-				A66016922A162B3200AE96C8 /* SquarewaveDR.rcproject */,
-				C7AA30D429B874DE0080D7B8 /* Experience.rcproject */,
+				5FA758442A3A07AE00412430 /* RCProjects */,
 				C7AD257329C2F039000B3B5C /* ARapp */,
 				C738CB1929D0667C002A5F1C /* ARScan */,
 				C7AD256929C2F038000B3B5C /* ARChart */,
@@ -500,7 +508,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1310;
-				LastUpgradeCheck = 1310;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					C7AA30CC29B874DE0080D7B8 = {
 						CreatedOnToolsVersion = 13.1;
@@ -508,7 +516,7 @@
 				};
 			};
 			buildConfigurationList = C7AA30C829B874DE0080D7B8 /* Build configuration list for PBXProject "Ar trial" */;
-			compatibilityVersion = "Xcode 13.0";
+			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -694,6 +702,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -708,7 +717,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -755,6 +764,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -763,7 +773,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -792,14 +802,14 @@
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeRight;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationLandscapeRight;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hhxhans.Ar-trialios15";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hhxhans.Ar-trialios17";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_ENABLE_BATCH_MODE = NO;
@@ -827,14 +837,14 @@
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeRight;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationLandscapeRight;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hhxhans.Ar-trialios15";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hhxhans.Ar-trialios17";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_ENABLE_BATCH_MODE = NO;

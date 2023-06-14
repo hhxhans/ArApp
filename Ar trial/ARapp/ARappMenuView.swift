@@ -15,33 +15,6 @@ struct ARappmenuView: View {
     @EnvironmentObject var Usermodel:Appusermodel
     @StateObject var ARappMaterialpart:ARappMaterialpartmodel=ARappMaterialpartmodel()
     @State var usersheetpresent:Bool=false
-    // MARK: Toolbar Content
-    /// - Returns: ToolbarContent for Menu
-    func MenutoolbarContent(geometry:GeometryProxy)->some ToolbarContent{
-        Group{
-            //Trailing picker to switch between two servers
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
-                Picker(selection: $Usermodel.user.simulationurl){
-                    ForEach(Usermodel.Urladdress.indices,id:\.self){index in
-                        Image(systemName: "\(index).circle")
-                            .foregroundColor(Color.accentColor)
-                            .tag(Usermodel.Urladdress[index])
-                    }
-                } label: {
-                    Image(systemName: "network")
-                        .foregroundColor(Color.accentColor)
-                }
-                .pickerStyle(.menu)
-                .padding(.trailing, 5)
-                //Button to switch language
-                Toggle(isOn: $Usermodel.Language) {
-                    Text("")
-                }
-                .toggleStyle(.switch)
-
-            }
-        }
-    }
     
     
     
@@ -99,6 +72,35 @@ struct ARappmenuView: View {
 }
 
 extension ARappmenuView{
+    
+    // MARK: Toolbar Content
+    /// - Returns: ToolbarContent for Menu
+    func MenutoolbarContent(geometry:GeometryProxy)->some ToolbarContent{
+        Group{
+            //Trailing picker to switch between two servers
+            ToolbarItemGroup(placement: .topBarTrailing) {
+                Picker(selection: $Usermodel.user.simulationurl){
+                    ForEach(Usermodel.Urladdress.indices,id:\.self){index in
+                        Image(systemName: "\(index).circle")
+                            .foregroundColor(Color.accentColor)
+                            .tag(Usermodel.Urladdress[index])
+                    }
+                } label: {
+                    Image(systemName: "network")
+                        .foregroundColor(Color.accentColor)
+                }
+                .pickerStyle(.menu)
+                .padding(.trailing, 5)
+                //Button to switch language
+                Toggle(isOn: $Usermodel.Language) {
+                    Text("")
+                }
+                .toggleStyle(.switch)
+
+            }
+        }
+    }
+
     
     //MARK: AR section definition
     /// Navigationlinks to all ARscan views

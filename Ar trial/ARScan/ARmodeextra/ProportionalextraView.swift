@@ -313,9 +313,5 @@ struct ProportionalextrachartView:View{
                 }
             )
         }
-        .onChange(of: geometry.size) { value in
-//            guard proportionalmodel.ExtraViewstatus == .chart else {return}
-//            proportionalmodel.ExtraViewstatus = .start
-        }
     }
 }
