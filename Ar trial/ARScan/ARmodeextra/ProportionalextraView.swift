@@ -82,7 +82,7 @@ struct ProportionalextrachartView:View{
             switch proportionalmodel.ExtraViewstatus{
             case .start:
                 Button(action: proportionalmodel.Statusforward) {
-                    Text(Usermodel.Language ? "仿真" : "Simulation")
+                    Text("Simulation")
                 }
                 .buttonStyle(.borderedProminent)
                 .buttonBorderShape(.roundedRectangle(radius: 2))
@@ -90,7 +90,7 @@ struct ProportionalextrachartView:View{
                 if zooming{
                     MultiLineChartRCView(
                         data: Proportionalcircuitmodel.getdata(statistic: self.statistic, gradientcolors: self.gradientcolors),
-                        title: Usermodel.Language ? "加减法电路" : "Proportional",
+                        title: "Proportional",
                         chartwidth: geometry.size.width/4*zoomratio,
                         chartheight: geometry.size.height/5*zoomratio,
                         informlabel:chartinform,
@@ -103,7 +103,7 @@ struct ProportionalextrachartView:View{
                 }else{
                     MultiLineChartRCView(
                         data: Proportionalcircuitmodel.getdata(statistic: self.statistic, gradientcolors: self.gradientcolors),
-                        title: Usermodel.Language ? "加减法电路" : "Proportional",
+                        title: "Proportional",
                         chartwidth: geometry.size.width/4,
                         chartheight: geometry.size.height/5,
                         informlabel:chartinform,
@@ -271,7 +271,7 @@ struct ProportionalextrachartView:View{
                         Button {
                             proportionalmodel.Statusbackward()
                         } label: {
-                            Text(Usermodel.Language ? "取消" : "Cancel")
+                            Text("Cancel")
                                 .foregroundColor(.primary)
                         }
                         .buttonStyle(.borderedProminent)
@@ -285,7 +285,7 @@ struct ProportionalextrachartView:View{
                         proportionalmodel.confirmvalue()
                         appmodel.proportionalupdatetext(ratext: proportionalmodel.resistanceatext, rftext: proportionalmodel.resistanceftext, plusresistancetext: proportionalmodel.resistanceplustext, minusresistancetext: proportionalmodel.resistanceminustext)
                     } label: {
-                        Text(Usermodel.Language ? "确认" : "Confirm")
+                        Text("Confirm")
                             .foregroundColor(.primary)
                     }
                     .buttonStyle(.borderedProminent)
@@ -300,14 +300,14 @@ struct ProportionalextrachartView:View{
         .offset(y: -geometry.size.height*Usermodel.Circuitupdatetabheightratio)
         .alert(isPresented: $showalert) {
             Alert(
-                title: Text(Usermodel.Language ? "即将展示仿真图像" : "Chart ready to display"),
+                title: Text("Chart ready to display"),
                 primaryButton: .destructive(
-                    Text(Usermodel.Language ? "取消" : "Cancel").foregroundColor(.red)
+                    Text("Cancel").foregroundColor(.red)
                 ) {
                     proportionalmodel.ExtraViewstatus = .input
                 },
                 secondaryButton: .default(
-                    Text(Usermodel.Language ? "好的" : "OK")
+                    Text("OK")
                 ){
                     proportionalmodel.Statusforward()
                 }

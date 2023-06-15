@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-import AVFoundation
-import AVKit
 
 //MARK: Appmenuview
 /// App menu
@@ -90,11 +88,6 @@ extension ARappmenuView{
                 }
                 .pickerStyle(.menu)
                 .padding(.trailing, 5)
-                //Button to switch language
-                Toggle(isOn: $Usermodel.Language) {
-                    Text("")
-                }
-                .toggleStyle(.switch)
 
             }
             ToolbarItem(placement: .bottomBar) {
@@ -137,26 +130,14 @@ extension ARappmenuView{
     //MARK: AR section definition
     /// Navigationlinks to all ARscan views
     private var Scansection:some View{
-        Section(header: Text(Usermodel.Language ? "增强现实模块" : "ARscan").font(.title)) {
+        Section(header: Text("ARscan").font(.title)) {
             ForEach(scanmode.allCases,id:\.rawValue){mode in
                 NavigationLink(destination: ARscanView(startmode:mode,extraviewmode: mode)) {
-                    Text(
-                        mode.RawValuebyLanguage(Language: Usermodel.Language)
-                    )
+                    Text(mode.rawValue)
                         .font(.title2)
                 }
 
             }
-//            ForEach(scaaningmodes) { Scanmodeforvm in
-//                NavigationLink(destination: ARscanView(startmode:Scanmodeforvm.mode,extraviewmode: Scanmodeforvm.mode)) {
-//                    Text(
-//                        Scanmodeforvm.mode.RawValuebyLanguage(Language: Usermodel.Language)
-//                    )
-//                        .font(.title2)
-//                }
-////                .background(Color.BackgroundprimaryColor)
-//
-//            }
         }
     }
     
@@ -165,15 +146,12 @@ extension ARappmenuView{
     //MARK: Material section definition
     /// Navigationlinks to all Material views
     private var Materialsection:some View{
-        Section(header: Text(Usermodel.Language ? "资料" : "Material").font(.title)) {
+        Section(header: Text("Material").font(.title)) {
             ForEach(ARappMaterialpart.Material.indices,id:\.self) { index in
                 NavigationLink(destination: ARappMaterialview(chapter: index, appmodel: ARappMaterialpart)) {
                     Text("Ch\(index)").font(.title2).bold()
                     if ARappMaterialpart.chapterviewed[index]{
-                        Text(Usermodel.Language ?
-                             "(上次看到:第\(ARappMaterialpart.imageprogress[index]))页" :
-                                "(last viewing:page\(ARappMaterialpart.imageprogress[index]))"
-                        ).font(.title3)
+                        Text("(last viewing:page\(ARappMaterialpart.imageprogress[index]))").font(.title3)
                     }
                 }
                 // Set image progress and chapter viewed from AppStorage and coredata

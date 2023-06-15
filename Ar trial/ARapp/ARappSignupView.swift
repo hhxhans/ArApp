@@ -16,15 +16,13 @@ struct ARappSignupView: View {
     @State var url:String=""
     
     var Signupresulttext:String{
-        Usermodel.Signupsuccess! ? Usermodel.Language ? "注册成功" : "Sign up success" : Usermodel.Language ? "注册失败" : "Sign up fail"
+        if let result=Usermodel.Signupsuccess{
+            return result ? "Sign up success" : "Sign up fail"
+        }
+        return ""
     }
     
     var TextFieldLeadingLabels:[String]{
-        Usermodel.Language ? [
-         "用户名",
-         "密码",
-         "服务器地址"
-        ] :
          [
          "Username",
          "Password",
@@ -44,7 +42,7 @@ struct ARappSignupView: View {
                         if Usermodel.Signupsuccess == nil {
                             ProgressView()
                         }else{
-                            Text(Usermodel.Language ? "注册" : "Registration").font(.largeTitle).bold()
+                            Text("Registration").font(.largeTitle).bold()
                             Spacer()
                             Image(systemName: "person.crop.circle")
                                 //.resizable().scaledToFit()
@@ -59,7 +57,7 @@ struct ARappSignupView: View {
                     }
                     //View when typing in user information
                     else{
-                        Text(Usermodel.Language ? "注册" : "Registration").font(.largeTitle).bold()
+                        Text("Registration").font(.largeTitle).bold()
                         Spacer()
                         Image(systemName: "person.crop.circle")
                             //.resizable().scaledToFit()
@@ -75,7 +73,7 @@ struct ARappSignupView: View {
                         Button{
                             Usermodel.Signup(username: username, password: password, signupurl: url, dismissAction: dismiss)
                         }label: {
-                            Text(Usermodel.Language ? "确认" : "Confirm")
+                            Text("Confirm")
                                 .foregroundColor(.BackgroundprimaryColor)
                         }
                         .padding()

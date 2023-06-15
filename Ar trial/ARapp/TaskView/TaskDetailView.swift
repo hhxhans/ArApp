@@ -24,7 +24,7 @@ struct TaskDetailView: View {
                     Button{
                         OnlineTaskmodel.Deletetask(Url: Usermodel.user.simulationurl, taskindex: Taskindex)
                     }label:{
-                        Text(Usermodel.Language ? "删除任务" : "Delete task")
+                        Text("Delete task")
                     }
                     .buttonStyle(.borderedProminent)
                     .buttonBorderShape(.roundedRectangle(radius: 3))
@@ -44,8 +44,8 @@ struct TaskDetailView: View {
         .alert(isPresented: $OnlineTaskmodel.TaskDeletingResponseReceive) {
             Alert(title: OnlineTaskmodel.TaskDeletingSuccess == nil ? Text("") :
                     OnlineTaskmodel.TaskDeletingSuccess! ?
-                  (Usermodel.Language ? Text("删除成功") : Text("Task delete success")) :
-                    (Usermodel.Language ? Text("删除失败") : Text("Task delete fail")),
+                  Text("Task delete success") :
+                    Text("Task delete fail"),
                   dismissButton: .default(Text("OK")){
                 if let TaskDeletingSuccess=OnlineTaskmodel.TaskDeletingSuccess{
                     if TaskDeletingSuccess{

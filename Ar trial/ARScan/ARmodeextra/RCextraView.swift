@@ -114,7 +114,7 @@ struct RCextraView: View {
                                     pulsepresent=true
                                     inputpresent=true
                                 } label: {
-                                    Text("pulse input").font(.title3)
+                                    Text("step input").font(.title3)
                                     
                                 }.buttonStyle(.borderedProminent)
                                     .buttonBorderShape(.roundedRectangle(radius: 5))
@@ -215,7 +215,7 @@ extension RCextraView{
                 return "Values for sine input are inappropriate, please reset values to make 0.2<=R𝒘C<=5"
             }
             if self.pulsepresent{
-                return "Values for pulse input are inappropriate, please reset values to make 1/3<=R<=3"
+                return "Values for step input are inappropriate, please reset values to make 1/3<=R<=3"
             }
         }
         return ""

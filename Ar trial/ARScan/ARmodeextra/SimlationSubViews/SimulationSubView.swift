@@ -15,7 +15,7 @@ struct StartButton:View{
     var body: some View{
         ZStack{
             Button(action: Buttonaction) {
-                Text(Usermodel.Language ? "仿真" : "Simulation")
+                Text("Simulation")
             }
             .buttonStyle(.borderedProminent)
             .buttonBorderShape(.roundedRectangle(radius: 2))
@@ -94,7 +94,7 @@ struct InputConfirmButton: View {
             Buttonaction()
             
         }) {
-            Text(Usermodel.Language ? "确认" : "Confirm")
+            Text("Confirm")
                 .foregroundColor(Buttondisable ? Color.secondary:Color.white)
         }
         .disabled(Buttondisable)

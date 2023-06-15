@@ -34,7 +34,7 @@ struct PhotoCacheView: View {
                 }
             }
         }
-        .navigationTitle(Usermodel.Language ? "仿真图像缓存" : "Photo Cache")
+        .navigationTitle("Photo Cache")
         .onAppear(perform: Usermodel.Clearcache)
 
     }
@@ -68,7 +68,7 @@ struct PhotoCacheRow: View {
             Image(uiImage: uiimage)
                 .resizable().scaledToFit()
                 .padding(.leading, 5)
-            Text(mode.RawValuebyLanguage(Language: Usermodel.Language)+"\n"+key)
+            Text(mode.rawValue+"\n"+key)
             Spacer()
         }
             .frame(height:size.height*0.4)
@@ -121,7 +121,7 @@ struct PhotoCacheDetailView:View{
             Text(key)
             Spacer()
         }
-        .navigationTitle(mode.RawValuebyLanguage(Language: Usermodel.Language))
+        .navigationTitle(mode.rawValue)
         .toolbar{PhotoCacheDetailViewToolbarContent}
     }
 }

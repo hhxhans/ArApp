@@ -24,7 +24,7 @@ struct OnlineTaskView: View {
                         }label:{
                             HStack{
                                 Image(systemName:"plus")
-                                Text(Usermodel.Language ? "添加任务" : "Add task")
+                                Text("Add task")
                             }
                         }.padding(.horizontal,2)
                             .background(
@@ -66,11 +66,11 @@ struct OnlineTaskView: View {
                                             .foregroundColor(Color.accentColor)
                                         Divider()
                                         HStack{
-                                            Text(Usermodel.Language ? "剩余时间:" : "Remaining: ").font(.title2)
+                                            Text("Remaining: ").font(.title2)
                                             if OnlineTaskmodel.Remaining[index].4{
                                                 Text("\(OnlineTaskmodel.Remaining[index].0)d:\(OnlineTaskmodel.Remaining[index].1)h:\(OnlineTaskmodel.Remaining[index].2)m").font(.title2)
                                             }else{
-                                                Text(Usermodel.Language ? "已截止" : "0d:0h:0m Ended").font(.title2)
+                                                Text("0d:0h:0m Ended").font(.title2)
                                                     .foregroundColor(OnlineTaskmodel.Remaining[index].4 ? Color.primary : Color.red)
                                             }
                                         }
@@ -98,12 +98,7 @@ struct OnlineTaskView: View {
                 }
             }.frame(maxWidth: .infinity,maxHeight: .infinity)
                 .sheet(isPresented: $OnlineTaskmodel.TaskAddingdisplay) {
-                    (Usermodel.Language ? OnlineTaskAddingView(
-                        OnlineTaskmodel: OnlineTaskmodel,
-                        Tasktitle: "任务标题",
-                        Taskdescription: "任务描述"
-                    ) :
-                    OnlineTaskAddingView(OnlineTaskmodel: OnlineTaskmodel))                        .presentationDetents([.medium, .large])
+                    OnlineTaskAddingView(OnlineTaskmodel: OnlineTaskmodel)                        .presentationDetents([.medium, .large])
                         .presentationBackground(Usermodel.blurredShapestyle)
                 }
         }

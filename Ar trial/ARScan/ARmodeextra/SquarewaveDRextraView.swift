@@ -29,7 +29,7 @@ struct SquarewaveDRextraView: View {
                             InputupperLabel(backwardButtonaction: vm.inputbackward)
                             Group{
                                 StoptimeTextField(
-                                    leadingtext: Usermodel.Language ? "仿真截止时间" : "stoptime",
+                                    leadingtext: "stoptime",
                                     Stoptimetext: $vm.stoptimetext,
                                     unittext: "s",
                                     TextfieldWidth: Geometrysize.width/8,

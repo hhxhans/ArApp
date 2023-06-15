@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5FA758462A3ACD2900412430 /* ARappMaterialpartmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA758452A3ACD2900412430 /* ARappMaterialpartmodel.swift */; };
+		5FA758622A3B289100412430 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5FA758612A3B289100412430 /* Localizable.xcstrings */; };
 		A66016932A162B3200AE96C8 /* SquarewaveDR.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = A66016922A162B3200AE96C8 /* SquarewaveDR.rcproject */; };
 		A66016952A163EB800AE96C8 /* ServercircuitModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66016942A163EB800AE96C8 /* ServercircuitModels.swift */; };
 		A66016972A1640F500AE96C8 /* SinegeneratorextraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66016962A1640F500AE96C8 /* SinegeneratorextraView.swift */; };
@@ -121,6 +122,7 @@
 
 /* Begin PBXFileReference section */
 		5FA758452A3ACD2900412430 /* ARappMaterialpartmodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARappMaterialpartmodel.swift; sourceTree = "<group>"; };
+		5FA758612A3B289100412430 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		A66016922A162B3200AE96C8 /* SquarewaveDR.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; name = SquarewaveDR.rcproject; path = "Ar trial/RCProjects/SquarewaveDR.rcproject"; sourceTree = SOURCE_ROOT; };
 		A66016942A163EB800AE96C8 /* ServercircuitModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServercircuitModels.swift; sourceTree = "<group>"; };
 		A66016962A1640F500AE96C8 /* SinegeneratorextraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinegeneratorextraView.swift; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 				C7AA30D029B874DE0080D7B8 /* AppDelegate.swift */,
 				C7AA30D229B874DE0080D7B8 /* ContentView.swift */,
 				C70D16EE2A04E9D400389E0C /* Usermodel.swift */,
+				5FA758612A3B289100412430 /* Localizable.xcstrings */,
 				C7AA30D629B874E30080D7B8 /* Assets.xcassets */,
 				C767E09029D448A000E59311 /* ARAppdata.xcdatamodeld */,
 				5FA758442A3A07AE00412430 /* RCProjects */,
@@ -525,6 +528,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = C7AA30C429B874DE0080D7B8;
 			packageReferences = (
@@ -579,6 +583,7 @@
 				C744D22A29FD2D650035F31A /* 幻灯片43.PNG in Resources */,
 				C7AA30D729B874E30080D7B8 /* Assets.xcassets in Resources */,
 				C744D24129FD2D650035F31A /* 幻灯片26.PNG in Resources */,
+				5FA758622A3B289100412430 /* Localizable.xcstrings in Resources */,
 				C744D24029FD2D650035F31A /* 幻灯片32.PNG in Resources */,
 				C744D25429FD2D650035F31A /* 幻灯片13.PNG in Resources */,
 				C744D23729FD2D650035F31A /* 幻灯片21.PNG in Resources */,

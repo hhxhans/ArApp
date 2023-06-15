@@ -34,16 +34,9 @@ struct ARUpdatetabView:View{
                                     }label: {
                                         ZStack{
                                             Text(
-                                                Usermodel.Language ?
                                                 mode == extraviewmode ?
-                                                mode.RawValuebyLanguage(Language: Usermodel.Language).appending(Usermodel.Language ? "(现在)" : " (Current)")
-                                                :
-                                                    mode.RawValuebyLanguage(Language: Usermodel.Language)
-                                                :
-                                                    mode == extraviewmode ?
-                                                    mode.rawValue.appending(Usermodel.Language ? "(现在)" : " (Current)")
-                                                    :
-                                                        mode.rawValue
+                                                mode.rawValue.appending(" (Current)")
+                                                :mode.rawValue
                                             )
                                                 .foregroundColor(mode == extraviewmode ? Color.accentColor:Color.primary)
                                         }.frame(width:geometry.size.width*0.3)

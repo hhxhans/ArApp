@@ -45,7 +45,7 @@ struct ARscanView:View{
                 )
                     .ignoresSafeArea(.all, edges: .top)
                     .alert(isPresented: $showmodeinformation){
-                        ARappARpartmodel.generatemodeinform(mode: extraviewmode,Language: Usermodel.Language)
+                        ARappARpartmodel.generatemodeinform(mode: extraviewmode)
                     }
                 //extra view according to circuit mode
                 ARCircuitImageView(
