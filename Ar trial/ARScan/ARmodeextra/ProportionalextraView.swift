@@ -276,7 +276,7 @@ struct ProportionalextrachartView:View{
                         }
                         .buttonStyle(.borderedProminent)
                         .buttonBorderShape(.roundedRectangle(radius: 1))
-                        .accentColor(Color.red)
+                        .tint(Color.red)
                     }
                     Button {
                         if proportionalmodel.ExtraViewstatus == .input{
@@ -290,7 +290,7 @@ struct ProportionalextrachartView:View{
                     }
                     .buttonStyle(.borderedProminent)
                     .buttonBorderShape(.roundedRectangle(radius: 1))
-                    .accentColor(proportionalmodel.valuelegal() ? Color.accentColor : Color.gray)
+                    .tint(proportionalmodel.valuelegal() ? Color.accentColor : Color.gray)
                     .disabled(!proportionalmodel.valuelegal())
                 }
 

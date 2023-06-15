@@ -13,13 +13,25 @@ struct PhotoCacheView: View {
         GeometryReader{
             let size=$0.size
             List {
-                ForEach(Usermodel.PhotoCachekeys) { element in
-                    if let uiimage=Usermodel.manager.get(key: element.key){
-                        NavigationLink(destination: PhotoCacheDetailView(size: size, uiimage: uiimage, key: element.key, mode: element.mode)) {
-                            PhotoCacheRow(size: size, uiimage: uiimage, key: element.key, mode: element.mode)
+                LazyVStack{
+                    ForEach(Usermodel.PhotoCachekeys) { element in
+                        if let uiimage=Usermodel.manager.get(key: element.key){
+                            NavigationLink(value: element) {
+                                PhotoCacheRow(size: size, uiimage: uiimage, key: element.key, mode: element.mode)
                             }
                         }
                     }
+                }
+            }
+            .navigationDestination(for: PhotoCache.self) { PhotoCache in
+                Group{
+                    if let uiimage=Usermodel.manager.get(key: PhotoCache.key){
+                        PhotoCacheDetailView(size: size, uiimage: uiimage, key: PhotoCache.key, mode: PhotoCache.mode)
+                    }else{
+                        EmptyView()
+                    }
+                    
+                }
             }
         }
         .navigationTitle(Usermodel.Language ? "仿真图像缓存" : "Photo Cache")

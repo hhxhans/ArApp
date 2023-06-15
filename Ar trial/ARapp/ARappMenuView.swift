@@ -15,67 +15,66 @@ struct ARappmenuView: View {
     @EnvironmentObject var Usermodel:Appusermodel
     @StateObject var ARappMaterialpart:ARappMaterialpartmodel=ARappMaterialpartmodel()
     @State var usersheetpresent:Bool=false
+    @State var Appcurrentfunction:AppFunction?
+    @State var path: NavigationPath=NavigationPath()
     
     
     
     // MARK: body
     var body: some View {
-        NavigationView{
-            GeometryReader{geometry in
-                List{
-                    //MARK: ARscan section placement
-                    Scansection
-                    
-
-                   
-                    
-                    //MARK: Material section placement
-                    //Materialsection
-                    NavigationLink(destination: PhotoCacheView()) {
-                        Text(Usermodel.Language ? "仿真图像缓存" : "Photo Cache").font(.title2)
-                    }
-                    NavigationLink(destination: OnlineTaskView()) {
-                        Text(Usermodel.Language ? "任务" : "Tasks").font(.title2)
-                    }
-                    Button {
-                        Usermodel.logout(FirstLogin: false)
-                        usersheetpresent.toggle()
-                    } label: {
-                        Text(Usermodel.Language ? "登出" : "Log out")
-                            .font(.title2)
-                            .padding(5)
-                            .foregroundColor(Color.BackgroundprimaryColor)
-                            .background(Color.red.cornerRadius(3))
-                    }
-
-                    
-    //                  NavigationLink(
-    //                    destination:
-    //                        VideoPlayer(player: .init(url: URL(fileURLWithPath:
-    //                                                            Bundle.main.path(forResource: "ARtrial", ofType: "mp4") ?? Bundle.main.path(forResource: "ARtrial", ofType: "mp4")!)
-    //                                                 )
-    //                                   )
-    //                        .ignoresSafeArea(.all, edges: .top)
-    //                  ) {
-    //                      Text("Tutorial Video").font(.title2)
-    //                  }.padding(.vertical,10)
-                }
-                .navigationTitle(Usermodel.Language ? "主页" : "Menu")
-                .toolbar{MenutoolbarContent(geometry: geometry)}
-                .fullScreenCover(isPresented: $usersheetpresent) {
-                    ArappLoginView(FirstLogin: false)
-                }
-            }
-
+        NavigationSplitView {
+            NavigationSplitViewsidebar
+        } detail: {
+            NavigationSplitViewdetail
         }
+        .onChange(of: path) {
+            print($1)
+        }
+
+//        NavigationView{
+//            List{
+//                //MARK: ARscan section placement
+//                Scansection
+//                
+//
+//               
+//                
+//                //MARK: Material section placement
+//                //Materialsection
+//                NavigationLink(destination: PhotoCacheView()) {
+//                    Text(Usermodel.Language ? "仿真图像缓存" : "Photo Cache").font(.title2)
+//                }
+//                NavigationLink(destination: OnlineTaskView()) {
+//                    Text(Usermodel.Language ? "任务" : "Tasks").font(.title2)
+//                }
+//                Button {
+//                    Usermodel.logout(FirstLogin: false)
+//                    usersheetpresent.toggle()
+//                } label: {
+//                    Text(Usermodel.Language ? "登出" : "Log out")
+//                        .font(.title2)
+//                        .padding(5)
+//                        .foregroundColor(Color.BackgroundprimaryColor)
+//                        .background(Color.red.cornerRadius(3))
+//                }
+//
+//                
+//            }
+//            .navigationTitle(Usermodel.Language ? "主页" : "Menu")
+//            .toolbar{MenutoolbarContent}
+//            .fullScreenCover(isPresented: $usersheetpresent) {
+//                ArappLoginView(FirstLogin: false)
+//            }
+//
+//        }
     }
 }
 
 extension ARappmenuView{
     
     // MARK: Toolbar Content
-    /// - Returns: ToolbarContent for Menu
-    func MenutoolbarContent(geometry:GeometryProxy)->some ToolbarContent{
+    /// ToolbarContent for Menu
+    var MenutoolbarContent:some ToolbarContent{
         Group{
             //Trailing picker to switch between two servers
             ToolbarItemGroup(placement: .topBarTrailing) {
@@ -98,6 +97,39 @@ extension ARappmenuView{
                 .toggleStyle(.switch)
 
             }
+            ToolbarItem(placement: .bottomBar) {
+                Image(systemName: "person.circle")
+                    .font(.title2)
+                    .fontWeight(.light)
+            }
+        }
+    }
+    
+    // MARK: NavigationSplitView sidebar
+    private var NavigationSplitViewsidebar:some View{
+        List(AppFunction.allCases, selection: $Appcurrentfunction) { function in
+            NavigationLink(value: function) {
+                Label(function.rawValue, systemImage: function.MenuLabelSystemImagename)
+            }
+        }
+        .toolbar{MenutoolbarContent}
+        .navigationTitle("Menu")
+    }
+    
+    // MARK: NavigationSplitView detail
+    private var NavigationSplitViewdetail:some View{
+        NavigationStack(path:$path){
+            if let Appcurrentfunction{
+                switch Appcurrentfunction{
+                case .AR: ARscanView(startmode:.free,extraviewmode: .free)
+                case .OnlineTask: OnlineTaskView()
+                case .PhotoCache: PhotoCacheView()
+                default: EmptyView()
+                }
+            }else{
+                EmptyView()
+            }
+
         }
     }
 
@@ -162,35 +194,6 @@ extension ARappmenuView{
     
 }
 
-////MARK: Scan section definition
-//struct scansectionView: View {
-//    @EnvironmentObject var appmodel:ARappmodel
-//    let geometry:GeometryProxy
-//    var body: some View {
-//        Section(header: Text("ARscan")) {
-//            ForEach(appmodel.scaaningmodes.indices) { index in
-//                HStack {
-//                    Text(appmodel.scaaningmodes[index].relatedtext)
-//                        .font(.title2)
-//                    Spacer()
-//                    HStack {
-//                        Image(systemName: "chevron.right.circle")
-//                            .font(.title2)
-//                            .foregroundColor(Color("arrowcolor1"))
-//                            .padding(.trailing)
-//
-//                    }.onTapGesture{
-//                        appmodel.currentscanmode=appmodel.scaaningmodes[index]
-//                        appmodel.ARscanning=true
-//                      }
-//                }
-//            }
-//        }
-//        .fullScreenCover(isPresented: $appmodel.ARscanning) {
-//            ARscanView(startmode: appmodel.currentscanmode,extraviewmode:appmodel.currentscanmode)
-//        }
-//    }
-//}
 
 struct ARappView_Previews: PreviewProvider {
     static var previews: some View {

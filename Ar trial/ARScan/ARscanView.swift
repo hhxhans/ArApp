@@ -191,7 +191,9 @@ struct ARViewContainer: UIViewRepresentable {
             appmodel.definetriggeractions(Sequencemodel: Sequencemodel)
             DispatchQueue.main.async {
                 Sequencemodel.clear()
-                extraviewmode=updatemode!
+                if let updatemode{
+                    extraviewmode=updatemode
+                }
                 updatemode=nil
             }
         }

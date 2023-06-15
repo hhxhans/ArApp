@@ -107,6 +107,7 @@ struct OnlineTaskView: View {
                         .presentationBackground(Usermodel.blurredShapestyle)
                 }
         }
+        .navigationTitle("Online Tasks")
         .toolbar{OnlineTaskViewToolbar}
         .onAppear{
             OnlineTaskmodel.Gettasks(Url: Usermodel.user.simulationurl)

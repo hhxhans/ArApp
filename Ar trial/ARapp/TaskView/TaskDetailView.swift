@@ -28,7 +28,7 @@ struct TaskDetailView: View {
                     }
                     .buttonStyle(.borderedProminent)
                     .buttonBorderShape(.roundedRectangle(radius: 3))
-                    .accentColor(Color.red)
+                    .tint(Color.red)
                 }
             }
             Text(task.title).font(.title).foregroundColor(.accentColor)

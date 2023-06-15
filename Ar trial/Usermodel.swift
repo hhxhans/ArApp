@@ -9,6 +9,22 @@ import Foundation
 import SwiftUI
 import Combine
 
+enum AppFunction:String,CaseIterable,Identifiable{
+    case AR="Augmented Reality"
+    case OnlineTask="Online Task"
+    case PhotoCache="Photo Cache"
+    
+    var id:String{rawValue}
+    
+    var MenuLabelSystemImagename:String{
+        switch self{
+        case .AR:"cube.transparent"
+        case .OnlineTask:"list.bullet.clipboard"
+        case .PhotoCache:"photo.badge.arrow.down"
+        default:""
+        }
+    }
+}
 /// The struct stores User information
 struct ArappUser:Identifiable,Codable {
     /// user id
@@ -25,7 +41,7 @@ struct ArappUser:Identifiable,Codable {
 }
 
 
-struct PhotoCache:Identifiable{
+struct PhotoCache:Identifiable,Hashable{
     var id:String=UUID().uuidString
     var key:String
     var mode:scanmode

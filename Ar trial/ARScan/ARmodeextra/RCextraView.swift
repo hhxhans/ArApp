@@ -163,7 +163,7 @@ struct RCextraView: View {
                                     }
                                     .buttonStyle(.borderedProminent)
                                     .buttonBorderShape(.roundedRectangle(radius: 1))
-                                    .accentColor(Color.gray)
+                                    .tint(Color.gray)
                                     Button {
                                         if valuelegal(){
                                             resistance=Double(resistancetext)!
@@ -177,7 +177,7 @@ struct RCextraView: View {
                                     }
                                     .buttonStyle(.borderedProminent)
                                     .buttonBorderShape(.roundedRectangle(radius: 1))
-                                    .accentColor(valuelegal() ? Color.accentColor : Color.gray)
+                                    .tint(valuelegal() ? Color.accentColor : Color.gray)
                                     .disabled(!valuelegal())
                                 
                                 }
