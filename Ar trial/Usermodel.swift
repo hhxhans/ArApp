@@ -16,6 +16,16 @@ enum AppFunction:String,CaseIterable,Identifiable{
     
     var id:String{rawValue}
     
+    var MenuLabelString:String{
+        switch self{
+        case .AR:String(localized: "Augmented Reality")
+        case .OnlineTask:String(localized: "Online Task")
+        case .PhotoCache:String(localized: "Photo Cache")
+        default:""
+        }
+    }
+
+    
     var MenuLabelSystemImagename:String{
         switch self{
         case .AR:"cube.transparent"
@@ -80,7 +90,7 @@ class Appusermodel:ObservableObject{
     
     init(){
         user=ArappUser()
-        appstatus=0
+        appstatus=1
         cancellables=Set<AnyCancellable>()
         signinbuttonable=true
         loginfailalert=false

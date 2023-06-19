@@ -17,16 +17,16 @@ struct ARappSignupView: View {
     
     var Signupresulttext:String{
         if let result=Usermodel.Signupsuccess{
-            return result ? "Sign up success" : "Sign up fail"
+            return result ? String(localized: "Sign up success") : String(localized: "Sign up fail")
         }
         return ""
     }
     
     var TextFieldLeadingLabels:[String]{
          [
-         "Username",
-         "Password",
-         "URL"
+            String(localized: "Username"),
+            String(localized: "Password"),
+            String(localized: "URL")
         ]
     }
     

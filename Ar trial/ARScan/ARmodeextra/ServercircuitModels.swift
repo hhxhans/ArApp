@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-import Combine
 
 /// Int enum, represents Simulation status of circuits that get
 /// simulation images from server.
@@ -31,7 +30,6 @@ class ServercircuitViewModel:ObservableObject{
     @Published var imageyoffset:CGFloat
     @Published var imagezoom:Bool
     var imagezoomratio: CGFloat{return imagezoom ? 1.5:1}
-    var cancellables = Set<AnyCancellable>()
     
     init() {
         requestcount=0
@@ -72,34 +70,6 @@ class ServercircuitViewModel:ObservableObject{
         return true
     }
     
-    /// AsyncImage Drag gesture
-    func AsyncImageDraggesture()->some Gesture{
-        DragGesture()
-                .onChanged { [weak self]value in
-                    if value.translation.height > 0 {
-                        self?.imageyoffset=value.translation.height
-                    }
-                }
-                .onEnded { [weak self]value in
-                    withAnimation(.spring()) {
-                        if value.translation.height > 20 {
-                            self?.imageforward()
-                        }
-                        self?.imageyoffset=0
-                    }
-                }
-    }
-    
-    /// Input area Drag gesture
-    func InputAreaDraggesture()->some Gesture{
-        DragGesture()
-                .onEnded { [weak self]value in
-                    if value.translation.height > 20 {
-                        self?.inputbackward()
-                    }
-                }
-
-    }
 
 }
 

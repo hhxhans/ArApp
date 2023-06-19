@@ -2,7 +2,24 @@
   "sourceLanguage" : "en",
   "strings" : {
     "" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
+    },
+    " (Current)" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " (现在)"
+          }
+        }
+      }
     },
     " HZ" : {
       "localizations" : {
@@ -54,15 +71,22 @@
         }
       }
     },
-    "%lld%%" : {
-
-    },
-    "%lldd:%lld:%lld:%lld" : {
+    "%@:" : {
       "localizations" : {
-        "en" : {
+        "zh-Hans" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lldd:%2$lld:%3$lld:%4$lld"
+            "state" : "translated",
+            "value" : "%@:"
+          }
+        }
+      }
+    },
+    "%lld%%" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
           }
         }
       }
@@ -73,6 +97,28 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "%1$lldd:%2$lldh:%3$lldm"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld天:%2$lld小时:%3$lld分"
+          }
+        }
+      }
+    },
+    "%lldd:%lldh:%lldm:%llds" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lldd:%2$lldh:%3$lldm:%4$llds"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld天:%2$lld小时:%3$lld分:%4$lld秒"
           }
         }
       }
@@ -238,6 +284,16 @@
         }
       }
     },
+    "Duty ratio adjustable squarewave generator" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "占空比可调的矩形波发生器"
+          }
+        }
+      }
+    },
     "f:" : {
       "localizations" : {
         "zh-Hans" : {
@@ -254,6 +310,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "登录失败"
+          }
+        }
+      }
+    },
+    "Free Scanning" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自由扫描"
           }
         }
       }
@@ -294,6 +360,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "好的"
+          }
+        }
+      }
+    },
+    "Online Task" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在线任务"
           }
         }
       }
@@ -355,14 +431,25 @@
         }
       }
     },
-    "Press the arrow.right button to see the circuit diagram, then freely magnify the image to adjust its size. While displaying circuit diagram, press the arrow.left button or drag the image left to hide the circuit diagram." : {
-
+    "Press the info icon to see information about current circuit, press the image icon to display the circuit diagram." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "点击信息按钮查看电路信息，点击图像按钮展示电路理论图。"
+          }
+        }
+      }
     },
-    "Press the info icon to see the description of the circuit" : {
-
-    },
-    "Press the reset button to move model back to original location or to clear scanning traces(useful in plane detection while a improper plane is detected as anchor)." : {
-
+    "Proportional Circuit" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "加减法电路"
+          }
+        }
+      }
     },
     "R-%lld:" : {
       "localizations" : {
@@ -385,10 +472,24 @@
       }
     },
     "R+%lld:" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
     },
     "Ra:" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
     },
     "Registration" : {
       "localizations" : {
@@ -411,7 +512,24 @@
       }
     },
     "Rf:" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
+    },
+    "Second order filter" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "二阶滤波器"
+          }
+        }
+      }
     },
     "Select deadline date" : {
       "localizations" : {
@@ -423,12 +541,42 @@
         }
       }
     },
+    "Sequence generator" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "序列发生器"
+          }
+        }
+      }
+    },
     "Sign up" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "注册"
+          }
+        }
+      }
+    },
+    "Sign up fail" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "注册失败"
+          }
+        }
+      }
+    },
+    "Sign up success" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "注册成功"
           }
         }
       }
@@ -449,6 +597,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "正弦输入"
+          }
+        }
+      }
+    },
+    "Squarewave generator" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "矩形波发生器"
           }
         }
       }
@@ -503,6 +661,26 @@
         }
       }
     },
+    "Task Description" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "任务描述"
+          }
+        }
+      }
+    },
+    "Task Title" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "任务标题"
+          }
+        }
+      }
+    },
     "This is a duty ratio adjustable squarewave generator." : {
       "localizations" : {
         "zh-Hans" : {
@@ -523,8 +701,15 @@
         }
       }
     },
-    "This is a sequence generator. Tap on 74138 Y0-Y7 and 74151 D0-D7 to set parameters of the generator. Tap the button on the left to see the details of the generator design." : {
-
+    "This is a sequence generator. Tap on 74138 Y0-Y7 and 74151 D0-D7 to set parameters of the generator. Tap the CLK button to send clock input signal." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这是序列发生器。点击74138的Y0-Y7和74151的D0-D7来设置发生器参数。点击CLK按钮输入时钟信号。"
+          }
+        }
+      }
     },
     "This is a squarewave generator." : {
       "localizations" : {
@@ -547,13 +732,34 @@
       }
     },
     "This is the simulation area, please ensure the parameters are proper." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这是仿真区域，请确保输入合理的电路参数。"
+          }
+        }
+      }
     },
     "U-%lld:" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
     },
     "U+%lld:" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
     },
     "URL" : {
       "extractionState" : "manual",
@@ -578,10 +784,24 @@
       }
     },
     "V" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
     },
     "𝒘:" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

@@ -44,5 +44,8 @@ extension String{
         }
 
     }
+    var LocalizedString: String{
+        return String(localized: String.LocalizationValue(self))
+    }
 
 }

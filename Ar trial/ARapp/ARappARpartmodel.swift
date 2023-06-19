@@ -19,19 +19,15 @@ enum scanmode:String,CaseIterable{
     case Proportional="Proportional Circuit"
 }
 extension scanmode{
-    func RawValuebyLanguage(Language:Bool)->String{
-        if Language {
-            switch self {
-            case .free:return "自由扫描"
-            case .Squarewavegenerator:return "矩形波发生器"
-            case .SquarewaveDRgenerator:return "占空比可调的矩形波发生器"
-            case .Secondorder:return "二阶状态变量滤波器"
-            case .Sequence:return "序列发生器"
-            case .Proportional:return "加减法电路"
-            default:return ""
-            }
-        }else{
-            return self.rawValue
+    var UpdatetabTextString:String{
+        switch self{
+        case .free:String(localized: "Free Scanning")
+        case .Proportional:String(localized: "Proportional Circuit")
+        case .Sequence:String(localized: "Sequence generator")
+        case .Squarewavegenerator:String(localized: "Squarewave generator")
+        case .SquarewaveDRgenerator:String(localized: "Duty ratio adjustable squarewave generator")
+        case .Secondorder:String(localized: "Second order filter")
+        default:""
         }
     }
     func Imagename()->String?{
@@ -95,7 +91,7 @@ class ARappARpartmodel:ObservableObject{
         }
         Tipconfirmed=true
         ARapptipEntity=[]
-        Tipnumber=4
+        Tipnumber=2
         fetchtipviewed()
         Updatetipstatus()
         print("init")
@@ -116,10 +112,6 @@ class ARappARpartmodel:ObservableObject{
                 tip1.tipviewed=false
                 let tip2=Tip(context: container.viewContext)
                 tip2.tipviewed=false
-                let tip3=Tip(context: container.viewContext)
-                tip3.tipviewed=false
-                let tip4=Tip(context: container.viewContext)
-                tip4.tipviewed=false
                 do {
                     try container.viewContext.save()
                     let request1 = NSFetchRequest<Tip>(entityName: "Tip")
@@ -171,11 +163,7 @@ class ARappARpartmodel:ObservableObject{
     func addanchor(ARview:ARView,mode:scanmode)->Void{
         let Anchors:[HasAnchoring]=[SquarewaveGeneratorAnchor,SquarewaveDRGeneratorAnchor,SecondorderfilterAnchor,SequencegeneratorAnchor,ProportionalAnchor]
         switch mode {
-        case .free:
-            for index in Anchors.indices {
-                ARview.scene.anchors.append(Anchors[index])
-
-            }
+        case .free:ARview.scene.anchors.append(contentsOf:Anchors)
         default:ARview.scene.anchors.append(Anchors[scanmodeindex[mode]!])
         }
     }
@@ -331,7 +319,7 @@ class ARappARpartmodel:ObservableObject{
             )
         case .Sequence:
             text=Text(
-                        "This is a sequence generator. Tap on 74138 Y0-Y7 and 74151 D0-D7 to set parameters of the generator. Tap the button on the left to see the details of the generator design."
+                        "This is a sequence generator. Tap on 74138 Y0-Y7 and 74151 D0-D7 to set parameters of the generator. Tap the CLK button to send clock input signal."
             )
         default:break
         }

@@ -11,8 +11,8 @@ import SwiftUI
 struct OnlineTaskAddingView: View {
     @EnvironmentObject var Usermodel:Appusermodel
     @ObservedObject var OnlineTaskmodel:OnlineTaskModel
-    @State var Tasktitle:String="Title"
-    @State var Taskdescription:String="Description"
+    @State var Tasktitle:String=String(localized: "Task Title")
+    @State var Taskdescription:String=String(localized: "Task Description")
     @State var TaskDate:Date=Date()
     @State var TaskAddingshowAlert:Bool=false
     @State var TaskAddingSuccessAlert:Bool=false

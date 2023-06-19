@@ -113,8 +113,8 @@ class OnlineTaskModel:ObservableObject{
         guard let year=TaskDate.year,let month=TaskDate.month,let day=TaskDate.day,let hour=TaskDate.hour,let minute=TaskDate.minute else{
             return
         }
-        let titlestring:String=title.converttohexcode()
-        let descriptionstring:String=description.converttohexcode()
+        let titlestring:String=title
+        let descriptionstring:String=description
         // generate dates tring
         let datestring=Date().DatetoString("YYYY-MMM-dd-hh:mm:ss")
         let urlstring:String="http://"+Url+"/AR/Online/Tasks/Addtask?datestring="+datestring+"&id=\(id)&title=\(titlestring)&description=\(descriptionstring)&year=\(year)&month=\(month)&day=\(day)&hour=\(hour)&minute=\(minute)"

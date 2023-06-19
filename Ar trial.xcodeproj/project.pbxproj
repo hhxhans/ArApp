@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5FA758462A3ACD2900412430 /* ARappMaterialpartmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA758452A3ACD2900412430 /* ARappMaterialpartmodel.swift */; };
 		5FA758622A3B289100412430 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5FA758612A3B289100412430 /* Localizable.xcstrings */; };
+		5FA7586A2A3C372C00412430 /* SimulationViewGestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA758692A3C372C00412430 /* SimulationViewGestures.swift */; };
 		A66016932A162B3200AE96C8 /* SquarewaveDR.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = A66016922A162B3200AE96C8 /* SquarewaveDR.rcproject */; };
 		A66016952A163EB800AE96C8 /* ServercircuitModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66016942A163EB800AE96C8 /* ServercircuitModels.swift */; };
 		A66016972A1640F500AE96C8 /* SinegeneratorextraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66016962A1640F500AE96C8 /* SinegeneratorextraView.swift */; };
@@ -123,6 +124,7 @@
 /* Begin PBXFileReference section */
 		5FA758452A3ACD2900412430 /* ARappMaterialpartmodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARappMaterialpartmodel.swift; sourceTree = "<group>"; };
 		5FA758612A3B289100412430 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		5FA758692A3C372C00412430 /* SimulationViewGestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationViewGestures.swift; sourceTree = "<group>"; };
 		A66016922A162B3200AE96C8 /* SquarewaveDR.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; name = SquarewaveDR.rcproject; path = "Ar trial/RCProjects/SquarewaveDR.rcproject"; sourceTree = SOURCE_ROOT; };
 		A66016942A163EB800AE96C8 /* ServercircuitModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServercircuitModels.swift; sourceTree = "<group>"; };
 		A66016962A1640F500AE96C8 /* SinegeneratorextraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinegeneratorextraView.swift; sourceTree = "<group>"; };
@@ -369,7 +371,7 @@
 				A66016962A1640F500AE96C8 /* SinegeneratorextraView.swift */,
 				A66016982A16420000AE96C8 /* Timer555triggerextraView.swift */,
 				C75AB1B62A1DFEEF00A1C694 /* VoltageregulatorextraView.swift */,
-				C7CF0C022A150A7B005F764D /* SimlationSubViews */,
+				C7CF0C022A150A7B005F764D /* SimlationSubComponents */,
 			);
 			path = ARmodeextra;
 			sourceTree = "<group>";
@@ -392,6 +394,7 @@
 		C7AA30C429B874DE0080D7B8 = {
 			isa = PBXGroup;
 			children = (
+				5FA758612A3B289100412430 /* Localizable.xcstrings */,
 				C7AA30CF29B874DE0080D7B8 /* Ar trial */,
 				C744D1F829FD2D650035F31A /* Ch0 */,
 				C7AA30CE29B874DE0080D7B8 /* Products */,
@@ -412,7 +415,6 @@
 				C7AA30D029B874DE0080D7B8 /* AppDelegate.swift */,
 				C7AA30D229B874DE0080D7B8 /* ContentView.swift */,
 				C70D16EE2A04E9D400389E0C /* Usermodel.swift */,
-				5FA758612A3B289100412430 /* Localizable.xcstrings */,
 				C7AA30D629B874E30080D7B8 /* Assets.xcassets */,
 				C767E09029D448A000E59311 /* ARAppdata.xcdatamodeld */,
 				5FA758442A3A07AE00412430 /* RCProjects */,
@@ -465,12 +467,13 @@
 			path = ARapp;
 			sourceTree = "<group>";
 		};
-		C7CF0C022A150A7B005F764D /* SimlationSubViews */ = {
+		C7CF0C022A150A7B005F764D /* SimlationSubComponents */ = {
 			isa = PBXGroup;
 			children = (
 				C7CF0C032A150ACE005F764D /* SimulationSubView.swift */,
+				5FA758692A3C372C00412430 /* SimulationViewGestures.swift */,
 			);
-			path = SimlationSubViews;
+			path = SimlationSubComponents;
 			sourceTree = "<group>";
 		};
 		C7E417822A0E878000A8EB9B /* TaskView */ = {
@@ -666,6 +669,7 @@
 				C7AD257729C2F039000B3B5C /* IndicatorPoint.swift in Sources */,
 				C7E4178E2A0FA9D200A8EB9B /* OnlineTaskModel.swift in Sources */,
 				C73D2D3229CF18510068B4DA /* RC.rcproject in Sources */,
+				5FA7586A2A3C372C00412430 /* SimulationViewGestures.swift in Sources */,
 				C78559B32A1137F500ABDF6E /* ColorExtension.swift in Sources */,
 				C767E09229D448A000E59311 /* ARAppdata.xcdatamodeld in Sources */,
 			);

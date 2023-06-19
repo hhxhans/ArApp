@@ -26,7 +26,7 @@ struct ARappmenuView: View {
             NavigationSplitViewdetail
         }
         .onChange(of: path) {
-            print($1)
+            print($0,$1)
         }
 
 //        NavigationView{
@@ -102,7 +102,7 @@ extension ARappmenuView{
     private var NavigationSplitViewsidebar:some View{
         List(AppFunction.allCases, selection: $Appcurrentfunction) { function in
             NavigationLink(value: function) {
-                Label(function.rawValue, systemImage: function.MenuLabelSystemImagename)
+                Label(function.MenuLabelString, systemImage: function.MenuLabelSystemImagename)
             }
         }
         .toolbar{MenutoolbarContent}
@@ -176,6 +176,6 @@ extension ARappmenuView{
 struct ARappView_Previews: PreviewProvider {
     static var previews: some View {
         ARappmenuView()
-            
+            .environmentObject(Appusermodel())
     }
 }

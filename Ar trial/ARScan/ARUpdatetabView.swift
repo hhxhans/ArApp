@@ -35,8 +35,8 @@ struct ARUpdatetabView:View{
                                         ZStack{
                                             Text(
                                                 mode == extraviewmode ?
-                                                mode.rawValue.appending(" (Current)")
-                                                :mode.rawValue
+                                                mode.UpdatetabTextString.appending(String(localized: " (Current)"))
+                                                :mode.UpdatetabTextString
                                             )
                                                 .foregroundColor(mode == extraviewmode ? Color.accentColor:Color.primary)
                                         }.frame(width:geometry.size.width*0.3)

@@ -38,11 +38,7 @@ struct LoginTextFieldAreaView: View {
         }
         TextFieldSecure=Array(repeating: true, count: TextFieldLeadingLabel.count)
         let Length:[Int]=[TextFieldLeadingLabel.count,TextFieldTypeisSecure.count,TextFieldtext.count]
-        if Length.max() == Length.min(){
-            InputLegal=true
-        }else{
-            InputLegal=false
-        }
+        InputLegal=Length.max() == Length.min()
     }
     
     var body: some View {
@@ -50,7 +46,7 @@ struct LoginTextFieldAreaView: View {
             VStack(alignment: .trailing){
                 ForEach(0..<TextFieldLeadingLabel.count,id: \.self){index in
                     HStack(spacing:.zero){
-                        Text(TextFieldLeadingLabel[index]+":")
+                        Text("\(TextFieldLeadingLabel[index]):")
                         ZStack{
                             if TextFieldTypeisSecure[index]{
                                 SecureField("", text: TextFieldtext[index])

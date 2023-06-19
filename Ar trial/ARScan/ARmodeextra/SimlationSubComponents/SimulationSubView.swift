@@ -147,3 +147,31 @@ struct SimulationImageupperLabel: View {
     }
 }
 
+struct AsyncImageContent:View{
+    let phase:AsyncImagePhase
+    let geometry:GeometryProxy
+    @ObservedObject var vm:ServercircuitViewModel
+    var body:some View{
+        switch phase {
+        case .empty:
+            ZStack{
+                ProgressView()
+            }.frame(width: geometry.size.width/4*vm.imagezoomratio, height: geometry.size.width/4*vm.imagezoomratio)
+        case .success(let returnedImage):
+            returnedImage
+                .resizable()
+                .aspectRatio(nil, contentMode: .fit)
+                .cornerRadius(3)
+        case .failure:
+            ZStack{
+                Image(systemName: "questionmark")
+                    .font(.headline)
+            }.frame(width: geometry.size.width/4, height: geometry.size.width/4)
+        default:
+            Image(systemName: "questionmark")
+                .font(.headline)
+        }
+
+    }
+
+}

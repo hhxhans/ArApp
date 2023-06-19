@@ -45,7 +45,7 @@ struct Timer555triggerextraView: View {
                             InputbackgroundView()
                         )
                         .offset(y: -geometry.size.height*Usermodel.Circuitupdatetabheightratio)
-                        .gesture(vm.InputAreaDraggesture())
+                        .gesture(InputAreaDraggesture(vm:vm))
                         
                 }.frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .bottomTrailing)
             case .image:
@@ -60,7 +60,7 @@ struct Timer555triggerextraView: View {
                         Divider()
                         if let imageurl=vm.Simulationurl{
                             AsyncImage(url: imageurl) {
-                                AsyncImageContent(phase: $0, geometry: geometry)
+                                AsyncImageContent(phase: $0, geometry: geometry, vm: vm)
                             }
                         }
                     }.frame(width: geometry.size.width/2*vm.imagezoomratio)
@@ -70,7 +70,7 @@ struct Timer555triggerextraView: View {
                         )
                         .offset(y:-geometry.size.height*Usermodel.Circuitupdatetabheightratio+vm.imageyoffset)
                     //.frame(maxWidth: geometry.size.width*0.9)
-                        .gesture(vm.AsyncImageDraggesture())
+                        .gesture(AsyncImageDraggesture(vm: vm))
                 }.frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .bottomTrailing)
 
                 
@@ -81,28 +81,3 @@ struct Timer555triggerextraView: View {
     }
 }
 
-extension Timer555triggerextraView{
-    @ViewBuilder
-    func AsyncImageContent(phase:AsyncImagePhase,geometry:GeometryProxy)->some View{
-        switch phase {
-        case .empty:
-            ZStack{
-                ProgressView()
-            }.frame(width: geometry.size.width/4*vm.imagezoomratio, height: geometry.size.width/4*vm.imagezoomratio)
-        case .success(let returnedImage):
-            returnedImage
-                .resizable()
-                .aspectRatio(nil, contentMode: .fit)
-                .cornerRadius(3)
-        case .failure:
-            ZStack{
-                Image(systemName: "questionmark")
-                    .font(.headline)
-            }.frame(width: geometry.size.width/4, height: geometry.size.width/4)
-        default:
-            Image(systemName: "questionmark")
-                .font(.headline)
-        }
-
-    }
-}

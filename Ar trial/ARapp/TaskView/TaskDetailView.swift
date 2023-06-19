@@ -32,7 +32,7 @@ struct TaskDetailView: View {
                 }
             }
             Text(task.title).font(.title).foregroundColor(.accentColor)
-            Text("\(taskremaining.0)d:\(taskremaining.1):\(taskremaining.2):\(taskremaining.3)").font(.title2)
+            Text("\(taskremaining.0)d:\(taskremaining.1)h:\(taskremaining.2)m:\(taskremaining.3)s").font(.title2)
             Text(task.description).font(.title3)
                 .foregroundColor(.primary)
                 .multilineTextAlignment(.leading)

@@ -17,9 +17,9 @@ struct ArappLoginView: View {
     
     var TextFieldLeadingLabels:[String]{
          [
-         "Username",
-         "Password",
-         "URL"
+         String(localized: "Username"),
+         String(localized: "Password"),
+         String(localized: "URL")
         ]
     }
     
