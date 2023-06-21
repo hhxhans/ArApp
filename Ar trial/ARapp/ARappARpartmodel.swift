@@ -19,7 +19,7 @@ enum scanmode:String,CaseIterable{
     case Proportional="Proportional Circuit"
 }
 extension scanmode{
-    var UpdatetabTextString:String{
+    var RawvalueTextString:String{
         switch self{
         case .free:String(localized: "Free Scanning")
         case .Proportional:String(localized: "Proportional Circuit")
@@ -30,17 +30,19 @@ extension scanmode{
         default:""
         }
     }
-    func Imagename()->String?{
-        switch self{
-        case .Proportional:return "proportional"
-        case .Sequence:return "sequence"
-        case .Squarewavegenerator:return "squarewave"
-        case .SquarewaveDRgenerator:return "squarewaveDR"
-        case .Secondorder:return "secondorderfilter"
-
-
-        default:return nil
-        }
+    var CircuitImage:Image?{
+        var CircuitImageResource:ImageResource?={
+            switch self{
+            case .Proportional:return .proportional
+            case .Sequence:return .sequence
+            case .Squarewavegenerator:return .squarewave
+            case .SquarewaveDRgenerator:return .squarewaveDR
+            case .Secondorder:return .secondorderfilter
+            default:return nil
+            }
+        }()
+        guard let resource=CircuitImageResource else{return nil}
+        return Image(resource)
     }
 }
 

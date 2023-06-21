@@ -30,7 +30,7 @@ struct ArappLoginView: View {
                 Spacer()
                 VStack{
                     //Upper image
-                    Image("SEUlogo").resizable().aspectRatio(nil, contentMode: .fit)
+                    Image(.seUlogo).resizable().aspectRatio(nil, contentMode: .fit)
                         .frame(width:geometry.size.width*0.4)
                     //Login TextFields
                     LoginTextFieldAreaView(

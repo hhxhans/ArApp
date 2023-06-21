@@ -68,7 +68,7 @@ struct PhotoCacheRow: View {
             Image(uiImage: uiimage)
                 .resizable().scaledToFit()
                 .padding(.leading, 5)
-            Text(mode.rawValue+"\n"+key)
+            Text(mode.RawvalueTextString+"\n"+key)
             Spacer()
         }
             .frame(height:size.height*0.4)
@@ -121,7 +121,7 @@ struct PhotoCacheDetailView:View{
             Text(key)
             Spacer()
         }
-        .navigationTitle(mode.rawValue)
+        .navigationTitle(mode.RawvalueTextString)
         .toolbar{PhotoCacheDetailViewToolbarContent}
     }
 }

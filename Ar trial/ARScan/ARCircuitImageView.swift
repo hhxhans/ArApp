@@ -40,8 +40,8 @@ struct ARCircuitImageView: View {
         VStack{
             HStack{
                 Spacer()
-                if let name=extraviewmode.Imagename(){
-                    Image(name)
+                if let image=extraviewmode.CircuitImage{
+                    image
                         .resizable().scaledToFit()
                         .frame(width:Imagewidth)
                         .opacity(ispresent ? 1 : 0.2)

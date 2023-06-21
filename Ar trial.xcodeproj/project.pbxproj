@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F4D36112A41F8A3007019EE /* SquarewaveCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4D36102A41F8A3007019EE /* SquarewaveCustom.swift */; };
 		5FA758462A3ACD2900412430 /* ARappMaterialpartmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA758452A3ACD2900412430 /* ARappMaterialpartmodel.swift */; };
 		5FA758622A3B289100412430 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5FA758612A3B289100412430 /* Localizable.xcstrings */; };
 		5FA7586A2A3C372C00412430 /* SimulationViewGestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA758692A3C372C00412430 /* SimulationViewGestures.swift */; };
@@ -122,6 +123,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5F4D36102A41F8A3007019EE /* SquarewaveCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquarewaveCustom.swift; sourceTree = "<group>"; };
 		5FA758452A3ACD2900412430 /* ARappMaterialpartmodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARappMaterialpartmodel.swift; sourceTree = "<group>"; };
 		5FA758612A3B289100412430 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		5FA758692A3C372C00412430 /* SimulationViewGestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationViewGestures.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				C7E417802A0E74B600A8EB9B /* Squarewave.rcproject */,
 				A66016922A162B3200AE96C8 /* SquarewaveDR.rcproject */,
 				C7AA30D429B874DE0080D7B8 /* Experience.rcproject */,
+				5F4D36102A41F8A3007019EE /* SquarewaveCustom.swift */,
 			);
 			path = RCProjects;
 			sourceTree = "<group>";
@@ -639,6 +642,7 @@
 				C7521BA729FE42A5005AA58A /* ArappLoginView.swift in Sources */,
 				C764EAB729D6A98800ED6A2D /* ARViewContainer_extension.swift in Sources */,
 				C738CB1B29D066C2002A5F1C /* ARUpdatetabView.swift in Sources */,
+				5F4D36112A41F8A3007019EE /* SquarewaveCustom.swift in Sources */,
 				C7AD257B29C2F039000B3B5C /* Helpers.swift in Sources */,
 				C7677FC429DEF752000A2267 /* ExtraimageView.swift in Sources */,
 				C70D17102A0503B100389E0C /* LoginTextFieldAreaView.swift in Sources */,
