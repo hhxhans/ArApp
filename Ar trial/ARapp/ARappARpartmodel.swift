@@ -325,12 +325,14 @@ class ARappARpartmodel:ObservableObject{
             )
         default:break
         }
-        return Alert(title: text,
-                     message: message,
-                     dismissButton: .default(
-                        Text("OK")
-                     )
-        )
+        return Alert(
+            title: text,
+            message: message,
+            dismissButton: .default(
+                Text("OK")
+                )
+            )
+
     }
     
 }

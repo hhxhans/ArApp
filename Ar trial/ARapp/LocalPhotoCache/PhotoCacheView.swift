@@ -41,7 +41,6 @@ struct PhotoCacheView: View {
 }
 
 struct PhotoCacheRow: View {
-    @EnvironmentObject var Usermodel:Appusermodel
     let size:CGSize
     let uiimage:UIImage
     var key:String
@@ -71,13 +70,12 @@ struct PhotoCacheRow: View {
             Text(mode.RawvalueTextString+"\n"+key)
             Spacer()
         }
-            .frame(height:size.height*0.4)
+        .frame(height:size.height*0.4)
 
     }
 }
 
 struct PhotoCacheDetailView:View{
-    @EnvironmentObject var Usermodel:Appusermodel
     let size:CGSize
     let uiimage:UIImage
     var key:String
