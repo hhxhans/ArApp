@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 
+/// App function parts
 enum AppFunction:String,CaseIterable,Identifiable{
     case AR="Augmented Reality"
     case OnlineTask="Online Task"
@@ -44,9 +45,9 @@ struct ArappUser:Identifiable,Codable {
     /// user authority level,
     /// authority < 0 means unauthorized user
     /// authority >=0 allow user to log in
-    var authority:Int = -1
+    var authority:Int = 1
     /// server address of sending requests
-    var simulationurl:String="10.198.72.122:8000"
+    var simulationurl:String="192.168.101.190:8000"
     var status:Bool=false
 }
 
@@ -87,6 +88,8 @@ class Appusermodel:ObservableObject{
     let Circuitupdatetabheightratio:CGFloat
     let manager:PhotoCacheManager
     @Published var PhotoCachekeys:[PhotoCache]
+    @Published var path: NavigationPath
+
     
     init(){
         user=ArappUser()
@@ -111,6 +114,7 @@ class Appusermodel:ObservableObject{
         Circuitupdatetabheightratio=0.08
         manager=PhotoCacheManager.instance
         PhotoCachekeys=[]
+        path=NavigationPath()
     }
     //MARK: Functions
     /// Returns whether the login view url is legal text

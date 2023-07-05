@@ -11,8 +11,8 @@ import Combine
 /// View of all Online Tasks
 struct OnlineTaskView: View {
     @EnvironmentObject var Usermodel:Appusermodel
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @StateObject var OnlineTaskmodel:OnlineTaskModel=OnlineTaskModel()
+    @State var CurrentDateforrefreshingview:Date=Date()
     //MARK: OnlineTaskViewToolbar
     var OnlineTaskViewToolbar:some ToolbarContent{
         Group{
@@ -48,57 +48,24 @@ struct OnlineTaskView: View {
         GeometryReader{geometry in
             ZStack{
                 ScrollView(.vertical, showsIndicators: false){
-                    ScrollViewReader { proxy in
-                        LazyVStack{
-                            HStack{
-                                Text(Date().DatetoString("YYYY MMM dd hh:mm:ss")).font(.title)
-                                Spacer()
-                            }.padding(.leading,5)
-                            ForEach(OnlineTaskmodel.Tasks.indices,id:\.self){index in
-                                HStack{
-                                    VStack(alignment: .leading,spacing: .zero){
-                                        //Text(OnlineTaskmodel.Tasks[index].id)
-                                        HStack{
-                                            Text(OnlineTaskmodel.Tasks[index].title)
-                                            Image(systemName: "arrow.right.circle")
-                                        }.font(.title)
-                                            .padding(.horizontal)
-                                            .foregroundColor(Color.accentColor)
-                                        Divider()
-                                        HStack{
-                                            Text("Remaining: ").font(.title2)
-                                            if OnlineTaskmodel.Remaining[index].4{
-                                                Text("\(OnlineTaskmodel.Remaining[index].0)d:\(OnlineTaskmodel.Remaining[index].1)h:\(OnlineTaskmodel.Remaining[index].2)m").font(.title2)
-                                            }else{
-                                                Text("0d:0h:0m Ended").font(.title2)
-                                                    .foregroundColor(OnlineTaskmodel.Remaining[index].4 ? Color.primary : Color.red)
-                                            }
-                                        }
-                                            .padding(.horizontal)
-                                    }
-                                    .frame(width:geometry.size.width*0.5)
-                                        .background(RoundedRectangle(cornerRadius: 5)
-                                                        .stroke(Color.secondary)
-                                        )
-                                        .padding(.horizontal,5)
-                                        .onTapGesture {
-                                            OnlineTaskmodel.TaskDetaildisplay[index].toggle()
-                                        }
-                                        .sheet(isPresented: $OnlineTaskmodel.TaskDetaildisplay[index]) {
-                                            TaskDetailView(OnlineTaskmodel: OnlineTaskmodel, Taskindex: index)
-                                                .presentationDetents([.medium, .large])
-                                                .presentationBackground(Usermodel.blurredShapestyle)
-                                        }
-                                    Spacer()
-                                }
-
+                    VStack{
+                        HStack{
+                            Text(CurrentDateforrefreshingview.DatetoString("YYYY MMM dd hh:mm:ss")).font(.title)
+                            Spacer()
+                        }.padding(.leading,5)
+                        ForEach(OnlineTaskmodel.Tasks){task in
+                            NavigationLink(value: task) {
+                                let currentdate=Date()
+                                let taskremaining=OnlineTaskmodel.TaskRemaining(task: task,currentdate:currentdate)
+                                OnlineTaskGridView(task: task, taskremaining: taskremaining, Gridwidth: geometry.size.width/2)
                             }
                         }
                     }
                 }
             }.frame(maxWidth: .infinity,maxHeight: .infinity)
                 .sheet(isPresented: $OnlineTaskmodel.TaskAddingdisplay) {
-                    OnlineTaskAddingView(OnlineTaskmodel: OnlineTaskmodel)                        .presentationDetents([.medium, .large])
+                    OnlineTaskAddingView(OnlineTaskmodel: OnlineTaskmodel)
+                        .presentationDetents([.large,.medium])
                         .presentationBackground(Usermodel.blurredShapestyle)
                 }
         }
@@ -106,12 +73,12 @@ struct OnlineTaskView: View {
         .toolbar{OnlineTaskViewToolbar}
         .onAppear{
             OnlineTaskmodel.Gettasks(Url: Usermodel.user.simulationurl)
-            OnlineTaskmodel.UpdateTasksremaining()
         }
-        .onReceive(timer) { date in
-            if !OnlineTaskmodel.TaskAddingdisplay{
-                OnlineTaskmodel.UpdateTasksremaining()
-            }
+        .onReceive(Usermodel.Timereveryonesecond) { date in
+            CurrentDateforrefreshingview=Date()
+        }
+        .navigationDestination(for: OnlineTask.self) { task in
+            TaskDetailView(OnlineTaskmodel: OnlineTaskmodel, task:task)
         }
         //.ignoresSafeArea(.all, edges: .top)
     }

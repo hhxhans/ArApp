@@ -12,9 +12,8 @@ import SwiftUI
 struct ARappmenuView: View {
     @EnvironmentObject var Usermodel:Appusermodel
     @StateObject var ARappMaterialpart:ARappMaterialpartmodel=ARappMaterialpartmodel()
-    @State var usersheetpresent:Bool=false
     @State var Appcurrentfunction:AppFunction?
-    @State var path: NavigationPath=NavigationPath()
+    @State var presentUserDetail:Bool=false
     
     
     
@@ -25,7 +24,11 @@ struct ARappmenuView: View {
         } detail: {
             NavigationSplitViewdetail
         }
-        .onChange(of: path) {
+        .sheet(isPresented: $presentUserDetail){
+            ARappUserDetailView(AppFunction: $Appcurrentfunction)
+                .presentationBackground(Usermodel.blurredShapestyle)
+        }
+        .onChange(of: Usermodel.path) {
             print($0,$1)
         }
 
@@ -75,25 +78,29 @@ extension ARappmenuView{
     var MenutoolbarContent:some ToolbarContent{
         Group{
             //Trailing picker to switch between two servers
-            ToolbarItemGroup(placement: .topBarTrailing) {
-                Picker(selection: $Usermodel.user.simulationurl){
-                    ForEach(Usermodel.Urladdress.indices,id:\.self){index in
-                        Image(systemName: "\(index).circle")
-                            .foregroundColor(Color.accentColor)
-                            .tag(Usermodel.Urladdress[index])
-                    }
-                } label: {
-                    Image(systemName: "network")
-                        .foregroundColor(Color.accentColor)
-                }
-                .pickerStyle(.menu)
-                .padding(.trailing, 5)
-
-            }
+//            ToolbarItemGroup(placement: .topBarTrailing) {
+//                Picker(selection: $Usermodel.user.simulationurl){
+//                    ForEach(Usermodel.Urladdress.indices,id:\.self){index in
+//                        Image(systemName: "\(index).circle")
+//                            .foregroundColor(Color.accentColor)
+//                            .tag(Usermodel.Urladdress[index])
+//                    }
+//                } label: {
+//                    Image(systemName: "network")
+//                        .foregroundColor(Color.accentColor)
+//                }
+//                .pickerStyle(.menu)
+//                .padding(.trailing, 5)
+//
+//            }
             ToolbarItem(placement: .bottomBar) {
-                Image(systemName: "person.circle")
-                    .font(.title2)
-                    .fontWeight(.light)
+                Button(action: {
+                    presentUserDetail.toggle()
+                }, label: {
+                    Image(systemName: "person.circle")
+                        .font(.title2)
+                        .fontWeight(.light)
+                })
             }
         }
     }
@@ -111,7 +118,7 @@ extension ARappmenuView{
     
     // MARK: NavigationSplitView detail
     private var NavigationSplitViewdetail:some View{
-        NavigationStack(path:$path){
+        NavigationStack(path:$Usermodel.path){
             if let Appcurrentfunction{
                 switch Appcurrentfunction{
                 case .AR: ARscanView(startmode:.free,extraviewmode: .free)

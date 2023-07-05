@@ -15,6 +15,8 @@
 		A66016952A163EB800AE96C8 /* ServercircuitModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66016942A163EB800AE96C8 /* ServercircuitModels.swift */; };
 		A66016972A1640F500AE96C8 /* SinegeneratorextraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66016962A1640F500AE96C8 /* SinegeneratorextraView.swift */; };
 		A66016992A16420000AE96C8 /* Timer555triggerextraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66016982A16420000AE96C8 /* Timer555triggerextraView.swift */; };
+		BB5040A52A556E0400112EB4 /* ARappUserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5040A42A556E0400112EB4 /* ARappUserDetailView.swift */; };
+		BBDDD7932A55530400C16630 /* OnlineTaskGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDD7922A55530400C16630 /* OnlineTaskGridView.swift */; };
 		C70D16EF2A04E9D400389E0C /* Usermodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70D16EE2A04E9D400389E0C /* Usermodel.swift */; };
 		C70D17102A0503B100389E0C /* LoginTextFieldAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70D170F2A0503B100389E0C /* LoginTextFieldAreaView.swift */; };
 		C72630E72A29BE40003035FE /* PhotoCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72630E62A29BE3F003035FE /* PhotoCacheManager.swift */; };
@@ -131,6 +133,9 @@
 		A66016942A163EB800AE96C8 /* ServercircuitModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServercircuitModels.swift; sourceTree = "<group>"; };
 		A66016962A1640F500AE96C8 /* SinegeneratorextraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinegeneratorextraView.swift; sourceTree = "<group>"; };
 		A66016982A16420000AE96C8 /* Timer555triggerextraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer555triggerextraView.swift; sourceTree = "<group>"; };
+		BB5040A42A556E0400112EB4 /* ARappUserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARappUserDetailView.swift; sourceTree = "<group>"; };
+		BB8082EA2A55101C00BE892C /* Ar-trial-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Ar-trial-Info.plist"; sourceTree = SOURCE_ROOT; };
+		BBDDD7922A55530400C16630 /* OnlineTaskGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineTaskGridView.swift; sourceTree = "<group>"; };
 		C70D16EE2A04E9D400389E0C /* Usermodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usermodel.swift; sourceTree = "<group>"; };
 		C70D170F2A0503B100389E0C /* LoginTextFieldAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFieldAreaView.swift; sourceTree = "<group>"; };
 		C72630E62A29BE3F003035FE /* PhotoCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCacheManager.swift; sourceTree = "<group>"; };
@@ -415,6 +420,7 @@
 		C7AA30CF29B874DE0080D7B8 /* Ar trial */ = {
 			isa = PBXGroup;
 			children = (
+				BB8082EA2A55101C00BE892C /* Ar-trial-Info.plist */,
 				C7AA30D029B874DE0080D7B8 /* AppDelegate.swift */,
 				C7AA30D229B874DE0080D7B8 /* ContentView.swift */,
 				C70D16EE2A04E9D400389E0C /* Usermodel.swift */,
@@ -462,6 +468,7 @@
 				C78559B42A113D8900ABDF6E /* ARappSignupView.swift */,
 				C743D08C29C878FD00F9EEB7 /* ARappMenuView.swift */,
 				C773A73E29C864B7006ABFA4 /* ARappMaterialView.swift */,
+				BB5040A42A556E0400112EB4 /* ARappUserDetailView.swift */,
 				C72630E52A29BE11003035FE /* LocalPhotoCache */,
 				C70D170E2A05037900389E0C /* LoginTextFieldAreaView */,
 				C7521BAA29FF8A2B005AA58A /* VideoView */,
@@ -482,10 +489,11 @@
 		C7E417822A0E878000A8EB9B /* TaskView */ = {
 			isa = PBXGroup;
 			children = (
+				C7E4178D2A0FA9D200A8EB9B /* OnlineTaskModel.swift */,
 				C7E417832A0E87CD00A8EB9B /* OnlineTaskView.swift */,
 				C7E4178B2A0F6D6600A8EB9B /* OnlineTaskAddingView.swift */,
-				C7E4178D2A0FA9D200A8EB9B /* OnlineTaskModel.swift */,
 				C78559B02A1120B300ABDF6E /* TaskDetailView.swift */,
+				BBDDD7922A55530400C16630 /* OnlineTaskGridView.swift */,
 			);
 			path = TaskView;
 			sourceTree = "<group>";
@@ -625,6 +633,7 @@
 				C76D69DB2A1BB0B400341FD5 /* ARCircuitImageView.swift in Sources */,
 				C7E4178C2A0F6D6600A8EB9B /* OnlineTaskAddingView.swift in Sources */,
 				C7C4FC2129D5ADDE00ED7DA2 /* SequencegeneratorextraView.swift in Sources */,
+				BBDDD7932A55530400C16630 /* OnlineTaskGridView.swift in Sources */,
 				A66016992A16420000AE96C8 /* Timer555triggerextraView.swift in Sources */,
 				C795C61829C9CDB400D9C4E5 /* ARappARpartmodel.swift in Sources */,
 				C7E4178A2A0F66BB00A8EB9B /* ViewExtension.swift in Sources */,
@@ -655,6 +664,7 @@
 				C7521BAE29FFAD07005AA58A /* VideoView.swift in Sources */,
 				C78559B12A1120B300ABDF6E /* TaskDetailView.swift in Sources */,
 				C7C2484E2A1A08F800C842E0 /* Sequencegenerator.rcproject in Sources */,
+				BB5040A52A556E0400112EB4 /* ARappUserDetailView.swift in Sources */,
 				C78559B52A113D8900ABDF6E /* ARappSignupView.swift in Sources */,
 				C78B1AB129F17122000C9F6B /* SquarewaveDRextraView.swift in Sources */,
 				C72630E92A29E57E003035FE /* PhotoFileManager.swift in Sources */,
@@ -808,9 +818,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Ar trial/Preview Content\"";
-				DEVELOPMENT_TEAM = VSJ9YQ67TG;
+				DEVELOPMENT_TEAM = V9DLXCX7ZK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Ar-trial-Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -843,9 +854,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Ar trial/Preview Content\"";
-				DEVELOPMENT_TEAM = VSJ9YQ67TG;
+				DEVELOPMENT_TEAM = V9DLXCX7ZK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Ar-trial-Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

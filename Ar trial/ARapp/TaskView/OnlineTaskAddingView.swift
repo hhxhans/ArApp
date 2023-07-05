@@ -59,18 +59,18 @@ struct OnlineTaskAddingView: View {
             
         }
         .alert(isPresented: $TaskAddingshowAlert) {
-            Alert(title: Text("Are you sure to add this task？"),
-                  primaryButton: .destructive(
-                    Text("Cancel")
-                        .foregroundColor(.red)
-                  ) {},
-                  secondaryButton: .default(
-                    Text("OK")
-                  ){
-                TaskAddingFail=nil
-                OnlineTaskmodel.Addtask(Url: Usermodel.user.simulationurl, id:Usermodel.user.id,title: Tasktitle, description: Taskdescription, DeadlineDate: TaskDate)
-            }
-            
+            Alert(
+                title: Text("Are you sure to add this task？"),
+                primaryButton: .destructive(
+                  Text("Cancel")
+                      .foregroundColor(.red)
+                ){},
+                secondaryButton: .default(
+                  Text("OK")
+                ){
+                    TaskAddingFail=nil
+                    OnlineTaskmodel.Addtask(Url: Usermodel.user.simulationurl, id:Usermodel.user.id,title: Tasktitle, description: Taskdescription, DeadlineDate: TaskDate)
+                }
             )
         }
         .onDisappear {

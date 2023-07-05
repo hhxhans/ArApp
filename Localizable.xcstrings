@@ -334,6 +334,9 @@
         }
       }
     },
+    "Log out" : {
+
+    },
     "Material" : {
       "localizations" : {
         "zh-Hans" : {

@@ -10,7 +10,7 @@ import SwiftUI
 import Combine
 
 /// Online task struct
-struct OnlineTask:Identifiable,Codable{
+struct OnlineTask:Identifiable,Codable,Hashable{
     /// task id
     var id:String=""
     /// task title
@@ -95,7 +95,6 @@ class OnlineTaskModel:ObservableObject{
             .sink{ [weak self] (returnedTasks) in
                 self?.Tasks = returnedTasks
                 self?.Tasks.sort {$0.date() <= $1.date()}
-                self?.UpdateTasksremaining()
             }
             .store(in: &cancellables)
     }
@@ -142,9 +141,9 @@ class OnlineTaskModel:ObservableObject{
     /// - Parameters:
     ///   - Url: Server address
     ///   - taskindex: Index of the task
-    func Deletetask(Url:String,taskindex:Int)->Void{
+    func Deletetask(Url:String,task:OnlineTask)->Void{
         // get task id
-        let taskid=Tasks[taskindex].id
+        let taskid=task.id
         let urlstring:String="http://"+Url+"/AR/Online/Tasks/Deletetask?id="+taskid
         print(urlstring)
         guard let url = URL(string: urlstring) else {
@@ -166,7 +165,7 @@ class OnlineTaskModel:ObservableObject{
 
     
     
-    /// Update remaining time of all tasks
+    /// Update remaining time of all tasks, abolished
     func UpdateTasksremaining()->Void{
         let currentdate=Date()
         Remaining=Array(repeating: (0,0,0,0,false), count: Tasks.count)
@@ -180,6 +179,16 @@ class OnlineTaskModel:ObservableObject{
             }else if let remainingday=taskremaining.day,let remaininghour=taskremaining.hour,let remainingminute=taskremaining.minute,let remainingsecond=taskremaining.second{
                 Remaining[index] = (remainingday,remaininghour,remainingminute,remainingsecond,true)
             }
+        }
+    }
+    
+    func TaskRemaining(task:OnlineTask,currentdate:Date)->(Int,Int,Int,Int,Bool){
+        guard task.date() > currentdate else{return (0,0,0,0,false)}
+        let taskremaining=Calendar.current.dateComponents([.day,.hour,.minute,.second], from: currentdate,to:task.date())
+        if let remainingday=taskremaining.day,let remaininghour=taskremaining.hour,let remainingminute=taskremaining.minute,let remainingsecond=taskremaining.second{
+            return (remainingday,remaininghour,remainingminute,remainingsecond,true)
+        }else{
+            return (0,0,0,0,false)
         }
     }
     
