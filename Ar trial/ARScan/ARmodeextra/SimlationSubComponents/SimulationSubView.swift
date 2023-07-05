@@ -10,7 +10,6 @@ import SwiftUI
 
 struct StartButton:View{
     @EnvironmentObject var Usermodel:Appusermodel
-    let yoffset:CGFloat
     let Buttonaction:()->Void
     var body: some View{
         ZStack{
@@ -19,7 +18,6 @@ struct StartButton:View{
             }
             .buttonStyle(.borderedProminent)
             .buttonBorderShape(.roundedRectangle(radius: 2))
-            .offset(y:yoffset)
         }.frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .bottomTrailing)
 
     }
@@ -149,14 +147,14 @@ struct SimulationImageupperLabel: View {
 
 struct AsyncImageContent:View{
     let phase:AsyncImagePhase
-    let geometry:GeometryProxy
+    let geometrysize:CGSize
     @ObservedObject var vm:ServercircuitViewModel
     var body:some View{
         switch phase {
         case .empty:
             ZStack{
                 ProgressView()
-            }.frame(width: geometry.size.width/4*vm.imagezoomratio, height: geometry.size.width/4*vm.imagezoomratio)
+            }.frame(width: geometrysize.width/4*vm.imagezoomratio, height: geometrysize.width/4*vm.imagezoomratio)
         case .success(let returnedImage):
             returnedImage
                 .resizable()
@@ -166,7 +164,7 @@ struct AsyncImageContent:View{
             ZStack{
                 Image(systemName: "questionmark")
                     .font(.headline)
-            }.frame(width: geometry.size.width/4, height: geometry.size.width/4)
+            }.frame(width: geometrysize.width/4, height: geometrysize.width/4)
         default:
             Image(systemName: "questionmark")
                 .font(.headline)

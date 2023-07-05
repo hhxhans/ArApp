@@ -14,16 +14,16 @@ struct SquarewaveextraView: View {
     @EnvironmentObject var Usermodel:Appusermodel
     @StateObject var vm = ARsquarewavemodel()
     @State var testonly:CGFloat = 100
+    var outergeometry:GeometryProxy?
     
 
     var body: some View {
-        GeometryReader{geometry in
-            let Geometrysize=geometry.size
+        let Geometrysize=outergeometry?.size ?? CGSize()
+        Group{
             switch vm.status {
-            case .start:
                 //MARK: Start status view
+            case .start:
                 StartButton(
-                    yoffset: -Geometrysize.height*Usermodel.Circuitupdatetabheightratio,
                     Buttonaction: vm.startforward
                 )
                 
@@ -57,11 +57,10 @@ struct SquarewaveextraView: View {
                                 )
                             }
                         }
-                    }.frame(width:geometry.size.width*0.35)
+                    }.frame(width:Geometrysize.width*0.35)
                         .background(
                             InputbackgroundView()
                         )
-                        .offset(y:-Geometrysize.height*Usermodel.Circuitupdatetabheightratio)
                         .gesture(InputAreaDraggesture(vm:vm))
                 }.frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .bottomTrailing)
                 
@@ -79,21 +78,22 @@ struct SquarewaveextraView: View {
                         Divider()
                         if let imageurl=vm.Simulationurl{
                             AsyncImage(url: imageurl) {
-                                AsyncImageContent(phase: $0, geometry: geometry, vm: vm)
+                                AsyncImageContent(phase: $0, geometrysize: Geometrysize, vm: vm)
                             }
                         }
-                    }.frame(width: geometry.size.width/2*vm.imagezoomratio)
+                    }.frame(width: Geometrysize.width/2*vm.imagezoomratio)
                         .padding(.horizontal,1)
                         .background(
                             SimulationImagebackgroundView()
                         )
-                        .offset(y:-geometry.size.height*Usermodel.Circuitupdatetabheightratio+vm.imageyoffset)
 
                     //.frame(maxWidth: geometry.size.width*0.9)
                         .gesture(AsyncImageDraggesture(vm: vm))
                 }.frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .bottomTrailing)
             }
+
         }
+        .offset(y:-(outergeometry?.size.height ?? 0)*Usermodel.Circuitupdatetabheightratio)
         .onReceive(Usermodel.Timereveryonesecond, perform: Usermodel.SimulationImageRefreshCountdown)
     }
     

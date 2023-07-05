@@ -56,7 +56,6 @@ struct PhotoCacheRow: View {
         self.key=key
         if lastnindex != nil{
             let endindex=transferkey.endIndex
-//            print(Int(endindex),transferkey.count)
             transferkey.removeSubrange(lastnindex!..<endindex)
             self.key=transferkey
         }

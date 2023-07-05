@@ -81,10 +81,10 @@ struct ArappLoginView: View {
                 }
                 Spacer()
             }
-        }
-        .sheet(isPresented: $Usermodel.UserSignup){
-            ARappSignupView()
-                .presentationBackground(Usermodel.blurredShapestyle)
+            .sheet(isPresented: $Usermodel.UserSignup){
+                ARappSignupView(geometry: geometry)
+                    .presentationBackground(Usermodel.blurredShapestyle)
+            }
         }
         
         .alert(isPresented: $Usermodel.loginfailalert) {

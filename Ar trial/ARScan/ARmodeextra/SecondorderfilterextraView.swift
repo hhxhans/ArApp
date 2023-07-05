@@ -13,14 +13,15 @@ struct SecondorderfilterextraView: View {
     @EnvironmentObject var Usermodel:Appusermodel
     @StateObject var vm = ARSecondorderfiltermodel()
     @State var testonly:CGFloat = 100
+    var outergeometry:GeometryProxy?
     
 
     var body: some View {
-        GeometryReader{geometry in
-            let Geometrysize=geometry.size
+        let Geometrysize=outergeometry?.size ?? CGSize()
+        Group{
             switch vm.status {
             case .start:
-                StartButton(yoffset: -Geometrysize.height*Usermodel.Circuitupdatetabheightratio,Buttonaction: vm.startforward)
+                StartButton(Buttonaction: vm.startforward)
             case .input:
                 ZStack{
                     VStack(alignment:.trailing,spacing:.zero){
@@ -36,7 +37,7 @@ struct SecondorderfilterextraView: View {
                             }
                             InputSlider(leadingtext: "RF:", Slidervalue: $vm.RF, minimumValue: 1, maximumValue: 100, SlidervalueStep: 1, ValueLabelDecimalplaces: 0, unittext: "k𝛀")
                             InputSlider(leadingtext: "CF:", Slidervalue: $vm.CF, minimumValue: 0.01, maximumValue: 100, SlidervalueStep: 0.01, ValueLabelDecimalplaces: 2, unittext: "𝛍F")
-                        }.frame(width:geometry.size.width*0.35)
+                        }.frame(width:Geometrysize.width*0.35)
                             .padding(.horizontal,1)
                         InputConfirmButton(Buttondisable: !vm.Valuelegal()){
                             vm.inputforward(userurl: Usermodel.user.simulationurl)
@@ -51,11 +52,10 @@ struct SecondorderfilterextraView: View {
                                 )
                             }
                         }
-                    }.frame(width:geometry.size.width*0.35)
+                    }.frame(width:Geometrysize.width*0.35)
                         .background(
                             InputbackgroundView()
                         )
-                        .offset(y: -geometry.size.height*Usermodel.Circuitupdatetabheightratio)
                         .gesture(InputAreaDraggesture(vm:vm))
                         
                 }.frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .bottomTrailing)
@@ -71,22 +71,23 @@ struct SecondorderfilterextraView: View {
                         Divider()
                         if let imageurl=vm.Simulationurl{
                             AsyncImage(url: imageurl) {
-                                AsyncImageContent(phase: $0, geometry: geometry, vm: vm)
+                                AsyncImageContent(phase: $0, geometrysize: Geometrysize, vm: vm)
                             }
                         }
-                    }.frame(width: geometry.size.width/2*vm.imagezoomratio)
+                    }.frame(width: Geometrysize.width/2*vm.imagezoomratio)
                         .padding(.horizontal,1)
                         .background(
                             SimulationImagebackgroundView()
                         )
-                        .offset(y:-geometry.size.height*Usermodel.Circuitupdatetabheightratio+vm.imageyoffset)
                     //.frame(maxWidth: geometry.size.width*0.9)
                         .gesture(AsyncImageDraggesture(vm: vm))
                 }.frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .bottomTrailing)
 
                 
             }
+
         }
+        .offset(y:-(outergeometry?.size.height ?? 0)*Usermodel.Circuitupdatetabheightratio)
         .onReceive(Usermodel.Timereveryonesecond, perform: Usermodel.SimulationImageRefreshCountdown)
         
     }

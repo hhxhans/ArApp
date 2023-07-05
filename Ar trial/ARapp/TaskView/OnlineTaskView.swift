@@ -13,6 +13,7 @@ struct OnlineTaskView: View {
     @EnvironmentObject var Usermodel:Appusermodel
     @StateObject var OnlineTaskmodel:OnlineTaskModel=OnlineTaskModel()
     @State var CurrentDateforrefreshingview:Date=Date()
+    var columns: [GridItem] { [GridItem(.adaptive(minimum: 200))] }
     //MARK: OnlineTaskViewToolbar
     var OnlineTaskViewToolbar:some ToolbarContent{
         Group{
@@ -45,40 +46,41 @@ struct OnlineTaskView: View {
     
     //MARK: body
     var body: some View {
-        GeometryReader{geometry in
-            ZStack{
-                ScrollView(.vertical, showsIndicators: false){
-                    VStack{
-                        HStack{
-                            Text(CurrentDateforrefreshingview.DatetoString("YYYY MMM dd hh:mm:ss")).font(.title)
-                            Spacer()
-                        }.padding(.leading,5)
+        ZStack{
+            ScrollView(.vertical, showsIndicators: false){
+                LazyVStack{
+                    HStack{
+                        Text(CurrentDateforrefreshingview.DatetoString("YYYY MMM dd hh:mm:ss")).font(.title)
+                        Spacer()
+                    }
+                    LazyVGrid(columns: columns,spacing: 2) {
                         ForEach(OnlineTaskmodel.Tasks){task in
+                            let currentdate=Date()
+                            let taskremaining=OnlineTaskmodel.TaskRemaining(task: task,currentdate:currentdate)
                             NavigationLink(value: task) {
-                                let currentdate=Date()
-                                let taskremaining=OnlineTaskmodel.TaskRemaining(task: task,currentdate:currentdate)
-                                OnlineTaskGridView(task: task, taskremaining: taskremaining, Gridwidth: geometry.size.width/2)
+                                OnlineTaskGridView(task: task, taskremaining: taskremaining)
                             }
                         }
                     }
-                }
-            }.frame(maxWidth: .infinity,maxHeight: .infinity)
-                .sheet(isPresented: $OnlineTaskmodel.TaskAddingdisplay) {
-                    OnlineTaskAddingView(OnlineTaskmodel: OnlineTaskmodel)
-                        .presentationDetents([.large,.medium])
-                        .presentationBackground(Usermodel.blurredShapestyle)
-                }
+                }.padding(.leading,5)
+            }
+            .navigationDestination(for: OnlineTask.self) { task in
+                TaskDetailView(OnlineTaskmodel: OnlineTaskmodel, task:task)
+            }
         }
+        .frame(maxWidth: .infinity,maxHeight: .infinity)
         .navigationTitle("Online Tasks")
         .toolbar{OnlineTaskViewToolbar}
+        .sheet(isPresented: $OnlineTaskmodel.TaskAddingdisplay) {
+            OnlineTaskAddingView(OnlineTaskmodel: OnlineTaskmodel)
+                .presentationDetents([.large,.medium])
+                .presentationBackground(Usermodel.blurredShapestyle)
+        }
         .onAppear{
             OnlineTaskmodel.Gettasks(Url: Usermodel.user.simulationurl)
         }
         .onReceive(Usermodel.Timereveryonesecond) { date in
             CurrentDateforrefreshingview=Date()
-        }
-        .navigationDestination(for: OnlineTask.self) { task in
-            TaskDetailView(OnlineTaskmodel: OnlineTaskmodel, task:task)
         }
         //.ignoresSafeArea(.all, edges: .top)
     }

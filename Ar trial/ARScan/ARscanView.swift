@@ -32,8 +32,8 @@ struct ARscanView:View{
 
     //MARK: body
     var body: some View{
-        GeometryReader{
-            let size=$0.size
+        GeometryReader{geometry in
+            let size=geometry.size
             ZStack {
                 //Main AR View
                 ARViewContainer(
@@ -55,16 +55,17 @@ struct ARscanView:View{
                     Geometrysize: size,
                     PresentToggleAnimation:.easeInOut(duration: 0.3)
                 )
-                modeextraview
+                modeextraview(geometry: geometry)
                 ARUpdatetabView(
                     appmodel: ARappARpart,
                     startmode:startmode!,
                     updatemode: $updatemode,
-                    extraviewmode: $extraviewmode
+                    extraviewmode: $extraviewmode,
+                    geometry:geometry
                 )
                 //topleadingbuttons
                 if !ARappARpart.Tipconfirmed{
-                    ARTipView(appmodel: ARappARpart)
+                    ARTipView(appmodel: ARappARpart, geometry: geometry)
                 }
                 //returnbutton
             }
@@ -81,12 +82,12 @@ struct ARscanView:View{
 }
 extension ARscanView{
     /// Extra view that depends on current scanning mode
-    private var modeextraview:some View{
+    private func modeextraview(geometry:GeometryProxy)->some View{
         ZStack{
             switch extraviewmode {
-            case .Squarewavegenerator:SquarewaveextraView()
-            case .SquarewaveDRgenerator:SquarewaveDRextraView()
-            case .Secondorder:SecondorderfilterextraView()
+            case .Squarewavegenerator:SquarewaveextraView(outergeometry: geometry)
+            case .SquarewaveDRgenerator:SquarewaveDRextraView(outergeometry: geometry)
+            case .Secondorder:SecondorderfilterextraView(outergeometry: geometry)
             case .Sequence:SequencegeneratorextraView(appmodel: ARappARpart, Sequencemodel: Sequencemodel)
             case .Proportional:ProportionalextraView(appmodel: ARappARpart, proportionalmodel: Proportionalmodel)
             default:EmptyView()

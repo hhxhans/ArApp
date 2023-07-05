@@ -92,6 +92,7 @@
       }
     },
     "%lldd:%lldh:%lldm" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -335,7 +336,14 @@
       }
     },
     "Log out" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "登出"
+          }
+        }
+      }
     },
     "Material" : {
       "localizations" : {
@@ -505,11 +513,28 @@
       }
     },
     "Remaining: " : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "剩余："
+          }
+        }
+      }
+    },
+    "Remaining: %lldd:%lldh:%lldm" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Remaining: %1$lldd:%2$lldh:%3$lldm"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "剩余: %1$lld天:%2$lld小时:%3$lld分"
           }
         }
       }
