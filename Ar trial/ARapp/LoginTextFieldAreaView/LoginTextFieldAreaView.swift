@@ -44,7 +44,7 @@ struct LoginTextFieldAreaView: View {
     var body: some View {
         if InputLegal{
             VStack(alignment: .trailing){
-                ForEach(0..<TextFieldLeadingLabel.count,id: \.self){index in
+                ForEach(TextFieldLeadingLabel.indices,id: \.self){index in
                     HStack(spacing:.zero){
                         Text("\(TextFieldLeadingLabel[index]):")
                         ZStack{

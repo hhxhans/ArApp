@@ -32,6 +32,7 @@ struct ARappUserDetailView: View {
     }
 }
 
-//#Preview {
-//    ARappUserDetailView()
-//}
+#Preview {
+    ARappUserDetailView(AppFunction: .constant(nil))
+        .environmentObject(Appusermodel())
+}

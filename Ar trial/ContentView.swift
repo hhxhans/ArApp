@@ -9,7 +9,7 @@ import SwiftUI
 struct ContentView : View {
     @StateObject var Usermodel:Appusermodel=Appusermodel()
     var body: some View {
-        ZStack{
+        Group{
             switch Usermodel.appstatus {
             case 0:ArappLoginView()
             case 1:ARappmenuView()

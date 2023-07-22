@@ -83,7 +83,7 @@ struct ARscanView:View{
 extension ARscanView{
     /// Extra view that depends on current scanning mode
     private func modeextraview(geometry:GeometryProxy)->some View{
-        ZStack{
+        Group{
             switch extraviewmode {
             case .Squarewavegenerator:SquarewaveextraView(outergeometry: geometry)
             case .SquarewaveDRgenerator:SquarewaveDRextraView(outergeometry: geometry)

@@ -14,11 +14,13 @@ struct ARappmenuView: View {
     @StateObject var ARappMaterialpart:ARappMaterialpartmodel=ARappMaterialpartmodel()
     @State var Appcurrentfunction:AppFunction?
     @State var presentUserDetail:Bool=false
-    
+    let menusplitview:Bool=false
     
     
     // MARK: body
     var body: some View {
+        
+        //Menu SplitView
         NavigationSplitView {
             NavigationSplitViewsidebar
         } detail: {
@@ -31,43 +33,27 @@ struct ARappmenuView: View {
         .onChange(of: Usermodel.path) {
             print($0,$1)
         }
-
-//        NavigationView{
-//            List{
-//                //MARK: ARscan section placement
-//                Scansection
-//                
-//
-//               
-//                
-//                //MARK: Material section placement
-//                //Materialsection
-//                NavigationLink(destination: PhotoCacheView()) {
-//                    Text(Usermodel.Language ? "仿真图像缓存" : "Photo Cache").font(.title2)
-//                }
-//                NavigationLink(destination: OnlineTaskView()) {
-//                    Text(Usermodel.Language ? "任务" : "Tasks").font(.title2)
-//                }
-//                Button {
-//                    Usermodel.logout(FirstLogin: false)
-//                    usersheetpresent.toggle()
-//                } label: {
-//                    Text(Usermodel.Language ? "登出" : "Log out")
-//                        .font(.title2)
-//                        .padding(5)
-//                        .foregroundColor(Color.BackgroundprimaryColor)
-//                        .background(Color.red.cornerRadius(3))
-//                }
-//
-//                
-//            }
-//            .navigationTitle(Usermodel.Language ? "主页" : "Menu")
-//            .toolbar{MenutoolbarContent}
-//            .fullScreenCover(isPresented: $usersheetpresent) {
-//                ArappLoginView(FirstLogin: false)
-//            }
-//
-//        }
+        
+        //Menu StackView
+        /*
+        NavigationStack(path: $Usermodel.path) {
+            HStack(alignment: .bottom){
+                ForEach(AppFunction.allCases, id:\.rawValue) { function in
+                    NavigationLink(value: function) {
+                        AppFunctionLabel(function: function)
+                    }
+                }
+            }
+            .navigationDestination(for: AppFunction.self) { function in
+                switch function{
+                case .AR: ARscanView(startmode:.free,extraviewmode: .free)
+                case .OnlineTask: OnlineTaskView()
+                case .PhotoCache: PhotoCacheView()
+                default: EmptyView()
+                }
+            }
+        }
+         */
     }
 }
 
@@ -174,6 +160,15 @@ extension ARappmenuView{
             }
         }
         
+    }
+    
+    @ViewBuilder
+    func AppFunctionLabel(function:AppFunction)->some View{
+        VStack{
+            Image(systemName: function.MenuLabelSystemImagename)
+            Text(function.MenuLabelString)
+        }
+        .font(.title)
     }
     
     

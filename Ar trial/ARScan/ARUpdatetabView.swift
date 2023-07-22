@@ -32,14 +32,13 @@ struct ARUpdatetabView:View{
                                 Button{
                                     updatemode=mode
                                 }label: {
-                                    ZStack{
                                         Text(
                                             mode == extraviewmode ?
                                             mode.RawvalueTextString.appending(String(localized: " (Current)"))
                                             :mode.RawvalueTextString
                                         )
                                             .foregroundColor(mode == extraviewmode ? Color.accentColor:Color.primary)
-                                    }.frame(width:geometry.size.width*0.3)
+                                    .frame(width:geometry.size.width*0.3)
                                 }.controlSize(.large)
                                 .frame(width:geometry.size.width*0.3)
                                 Rectangle().fill(Color.secondary.opacity(0.5))
