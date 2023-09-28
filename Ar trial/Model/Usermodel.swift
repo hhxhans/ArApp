@@ -277,7 +277,22 @@ class Appusermodel:ObservableObject{
         }
         return output.data
     }
-
     
-
+    /// Convert simulationurl string with paramater to key in PhotoCacheRowView and PhotoCacheDetailView
+    /// - Parameters:
+    ///   - key: simulationurl string with paramater
+    ///   - mode: Server Circuit mode
+    static func convertsimulationstring(key:String,mode:scanmode)->String{
+        var transferkey:String=key.split(separator: "?").last.map{
+            String($0)
+        } ?? ""
+        transferkey=transferkey.replacingOccurrences(of: "&", with: "\n")
+        let lastnindex=transferkey.lastIndex(of: "\n")
+        if lastnindex != nil{
+            let endindex=transferkey.endIndex
+            transferkey.removeSubrange(lastnindex!..<endindex)
+        }
+        return transferkey
+    }
+    
 }

@@ -40,7 +40,7 @@ struct InputupperLabel: View {
     }
 }
 
-struct StoptimeTextField: View {
+struct InputStoptimeTextField: View {
     let leadingtext:String
     @Binding var Stoptimetext:String
     let unittext:String
@@ -79,6 +79,53 @@ struct InputSlider: View {
             Text(String(format: "%.\(ValueLabelDecimalplaces)f", Slidervalue)+unittext)
         }.padding(.vertical,5)
 
+    }
+}
+
+struct InputSliderAreaView:View {
+    let leadingtext:[String]
+    var Slidervalue:[Binding<Double>]
+    let minimumValue:[Double]
+    let maximumValue:[Double]
+    let SlidervalueStep:[Double]
+    var ValueLabelDecimalplaces:[Int]
+    let unittext:[String]
+    let valuelegal:Bool
+    init(leadingtext: [String], Slidervalue: [Binding<Double>], minimumValue: [Double], maximumValue: [Double], SlidervalueStep: [Double], ValueLabelDecimalplaces: [Int], unittext: [String]) {
+        self.leadingtext = leadingtext
+        self.Slidervalue = Slidervalue
+        self.minimumValue = minimumValue
+        self.maximumValue = maximumValue
+        self.SlidervalueStep = SlidervalueStep
+        self.ValueLabelDecimalplaces = ValueLabelDecimalplaces
+        self.unittext = unittext
+        let length:[Int]=[leadingtext.count,Slidervalue.count,minimumValue.count,maximumValue.count,SlidervalueStep.count,ValueLabelDecimalplaces.count,unittext.count]
+        self.valuelegal = length.max() != nil && length.max() == length.min()
+    }
+    
+    init(leadingtext: [String], Slidervalue: [Binding<Double>], minimumValue: [Double], maximumValue: [Double], SlidervalueStep: [Double],unittext: [String]) {
+        self.leadingtext = leadingtext
+        self.Slidervalue = Slidervalue
+        self.minimumValue = minimumValue
+        self.maximumValue = maximumValue
+        self.SlidervalueStep = SlidervalueStep
+        self.ValueLabelDecimalplaces = Array(repeating: 0, count: leadingtext.count)
+        self.unittext = unittext
+        let length:[Int]=[leadingtext.count,Slidervalue.count,minimumValue.count,maximumValue.count,SlidervalueStep.count,ValueLabelDecimalplaces.count,unittext.count]
+        self.valuelegal = length.max() != nil && length.max() == length.min()
+    }
+
+
+    var body: some View {
+        if valuelegal{
+            VStack(alignment: .trailing, spacing: .zero){
+                ForEach(leadingtext.indices,id: \.self){index in
+                    InputSlider(leadingtext: leadingtext[index], Slidervalue: Slidervalue[index], minimumValue: minimumValue[index], maximumValue: maximumValue[index], SlidervalueStep: SlidervalueStep[index], ValueLabelDecimalplaces: ValueLabelDecimalplaces[index], unittext: unittext[index])
+                }
+            }
+        }else{
+            EmptyView()
+        }
     }
 }
 

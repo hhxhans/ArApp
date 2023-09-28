@@ -169,6 +169,11 @@ extension ARappmenuView{
             Text(function.MenuLabelString)
         }
         .font(.title)
+        .background {
+            RoundedRectangle(cornerRadius: 5)
+                .tint(.BackgroundprimaryColor)
+                .shadow(radius: 3)
+        }
     }
     
     

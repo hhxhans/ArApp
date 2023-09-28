@@ -44,7 +44,7 @@ struct SecondorderfilterextraView: View {
                             Usermodel.SimulationImagedisplay()
                             if let newkey=vm.Simulationurlstring,
                                Usermodel.manager.get(key: newkey) == nil{
-                                let imagekey=vm.Simulationurlstringwithparamater ?? ""
+                                let imagekey=Appusermodel.convertsimulationstring(key:vm.Simulationurlstringwithparamater ?? "",mode: .Secondorder)
                                 Usermodel.downloadImage(
                                     Imageurl: newkey,
                                     imagekey: imagekey,

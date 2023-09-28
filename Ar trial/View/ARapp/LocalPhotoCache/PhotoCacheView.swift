@@ -17,7 +17,7 @@ struct PhotoCacheView: View {
                     ForEach(Usermodel.PhotoCachekeys) { element in
                         if let uiimage=Usermodel.manager.get(key: element.key){
                             NavigationLink(value: element) {
-                                PhotoCacheRow(size: size, uiimage: uiimage, key: element.key, mode: element.mode)
+                                PhotoCacheRowView(size: size, uiimage: uiimage, key: element.key, mode: element.mode)
                             }
                         }
                     }
@@ -40,27 +40,12 @@ struct PhotoCacheView: View {
     }
 }
 
-struct PhotoCacheRow: View {
+struct PhotoCacheRowView: View {
     let size:CGSize
     let uiimage:UIImage
     var key:String
     let mode:scanmode
-    init(size:CGSize,uiimage:UIImage,key:String,mode:scanmode){
-        self.size=size
-        self.uiimage=uiimage
-        var transferkey:String=key.split(separator: "?").last.map{
-            String($0)
-        } ?? ""
-        transferkey=transferkey.replacingOccurrences(of: "&", with: "\n")
-        let lastnindex=transferkey.lastIndex(of: "\n")
-        self.key=key
-        if lastnindex != nil{
-            let endindex=transferkey.endIndex
-            transferkey.removeSubrange(lastnindex!..<endindex)
-            self.key=transferkey
-        }
-        self.mode=mode
-    }
+    
     var body: some View {
         HStack{
             Image(uiImage: uiimage)
@@ -79,23 +64,7 @@ struct PhotoCacheDetailView:View{
     let uiimage:UIImage
     var key:String
     let mode:scanmode
-    init(size:CGSize,uiimage:UIImage,key:String,mode:scanmode){
-        self.size=size
-        self.uiimage=uiimage
-        var transferkey:String=key.split(separator: "?").last.map{
-            String($0)
-        } ?? ""
-        transferkey=transferkey.replacingOccurrences(of: "&", with: "\n")
-        let lastnindex=transferkey.lastIndex(of: "\n")
-        self.key=key
-        if lastnindex != nil{
-            let endindex=transferkey.endIndex
-//            print(Int(endindex),transferkey.count)
-            transferkey.removeSubrange(lastnindex!..<endindex)
-            self.key=transferkey
-        }
-        self.mode=mode
-    }
+    
     
     var PhotoCacheDetailViewToolbarContent:some ToolbarContent{
         let shareimage=Image(uiImage: uiimage)

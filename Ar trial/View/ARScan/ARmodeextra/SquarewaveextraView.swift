@@ -1,19 +1,18 @@
 //
-//  SquarewaveDRextraView.swift
+//  SquarewaveView.swift
 //  Ar trial
 //
-//  Created by niudan on 2023/4/20.
+//  Created by niudan on 2023/4/18.
 //
 
 import SwiftUI
 import Combine
-
-
-struct SquarewaveDRextraView: View {
+//MARK: SquarewaveView
+struct SquarewaveextraView: View {
+    
     //View properties
     @EnvironmentObject var Usermodel:Appusermodel
-    @StateObject var vm = ARsquarewaveDRmodel()
-    @State var testonly:CGFloat = 100
+    @StateObject var vm = ARsquarewavemodel()
     var outergeometry:GeometryProxy?
     
 
@@ -21,29 +20,27 @@ struct SquarewaveDRextraView: View {
         let Geometrysize=outergeometry?.size ?? CGSize()
         Group{
             switch vm.status {
+                //MARK: Start status view
             case .start:
-                StartButton(Buttonaction: vm.startforward)
+                StartButton(
+                    Buttonaction: vm.startforward
+                )
+                
+                
+                
+                //MARK: Input status view
             case .input:
                 ZStack{
                     VStack(alignment:.trailing,spacing:.zero){
                         VStack(alignment:.trailing,spacing:.zero){
                             InputupperLabel(backwardButtonaction: vm.inputbackward)
-                            Group{
-                                StoptimeTextField(
-                                    leadingtext: "stoptime",
-                                    Stoptimetext: $vm.stoptimetext,
-                                    unittext: "s",
-                                    TextfieldWidth: Geometrysize.width/8,
-                                    TextFieldKeyboardTyperawValue: 2
-                                )
-                                InputSlider(leadingtext: "RT:", Slidervalue: $vm.RT, minimumValue: 1, maximumValue: 1000, SlidervalueStep: 1, ValueLabelDecimalplaces: 0, unittext: "k𝛀")
-                                InputSlider(leadingtext: "CT:", Slidervalue: $vm.CT, minimumValue: 1, maximumValue: 1000, SlidervalueStep: 1, ValueLabelDecimalplaces: 0, unittext: "𝛍F")
-                                InputSlider(leadingtext: "Uz:", Slidervalue: $vm.Uz, minimumValue: 1, maximumValue: 15, SlidervalueStep: 1, ValueLabelDecimalplaces: 0, unittext: "V")
-                                InputSlider(leadingtext: "RW:", Slidervalue: $vm.RW, minimumValue: 1, maximumValue: 1000, SlidervalueStep: 1, ValueLabelDecimalplaces: 0, unittext: "k𝛀")
-                                InputSlider(leadingtext: "RWRatio:", Slidervalue: $vm.RWRatio, minimumValue: 0, maximumValue: 1, SlidervalueStep: 0.01, ValueLabelDecimalplaces: 2, unittext: "")
-                            }
+                            InputStoptimeTextField(leadingtext: "stoptime", Stoptimetext: $vm.stoptimetext, unittext: "s", TextfieldWidth: Geometrysize.width/8,TextFieldKeyboardTyperawValue: 2)
+                            InputSlider(leadingtext: "RT:", Slidervalue: $vm.RT, minimumValue: 1, maximumValue: 1000, SlidervalueStep: 1, ValueLabelDecimalplaces: 0, unittext: "k𝛀")
+                            InputSlider(leadingtext: "CT:", Slidervalue: $vm.CT, minimumValue: 1, maximumValue: 1000, SlidervalueStep: 1, ValueLabelDecimalplaces: 0, unittext: "𝛍F")
+                            InputSlider(leadingtext: "VCC:", Slidervalue: $vm.VCC, minimumValue: 1, maximumValue: 15, SlidervalueStep: 1, ValueLabelDecimalplaces: 0, unittext: "V")
                             InputSlider(leadingtext: "R1:", Slidervalue: $vm.R1, minimumValue: 1, maximumValue: 1000, SlidervalueStep: 1, ValueLabelDecimalplaces: 0, unittext: "k𝛀")
                             InputSlider(leadingtext: "R2:", Slidervalue: $vm.R2, minimumValue: 1, maximumValue: 1000, SlidervalueStep: 1, ValueLabelDecimalplaces: 0, unittext: "k𝛀")
+                            InputSlider(leadingtext: "R3:", Slidervalue: $vm.R3, minimumValue: 1, maximumValue: 1000, SlidervalueStep: 1, ValueLabelDecimalplaces: 0, unittext: "k𝛀")
                         }.frame(width:Geometrysize.width*0.35)
                             .padding(.horizontal,1)
                         InputConfirmButton(Buttondisable: !vm.Valuelegal()){
@@ -51,11 +48,11 @@ struct SquarewaveDRextraView: View {
                             Usermodel.SimulationImagedisplay()
                             if let newkey=vm.Simulationurlstring,
                                Usermodel.manager.get(key: newkey) == nil{
-                                let imagekey=vm.Simulationurlstringwithparamater ?? ""
+                                let imagekey=Appusermodel.convertsimulationstring(key:vm.Simulationurlstringwithparamater ?? "",mode: .Squarewavegenerator)
                                 Usermodel.downloadImage(
                                     Imageurl: newkey,
                                     imagekey: imagekey,
-                                    mode: .SquarewaveDRgenerator
+                                    mode: .Squarewavegenerator
                                 )
                             }
                         }
@@ -64,8 +61,10 @@ struct SquarewaveDRextraView: View {
                             InputbackgroundView()
                         )
                         .gesture(InputAreaDraggesture(vm:vm))
-                        
                 }.frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .bottomTrailing)
+                
+                
+                //MARK: Image status view
             case .image:
                 ZStack{
                     VStack(spacing:.zero){
@@ -85,24 +84,18 @@ struct SquarewaveDRextraView: View {
                         .padding(.horizontal,1)
                         .background(
                             SimulationImagebackgroundView()
-                        )                    //.frame(maxWidth: geometry.size.width*0.9)
+                        )
+
+                    //.frame(maxWidth: geometry.size.width*0.9)
                         .gesture(AsyncImageDraggesture(vm: vm))
                 }.frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .bottomTrailing)
-
-                
             }
 
         }
         .offset(y:-(outergeometry?.size.height ?? 0)*Usermodel.Circuitupdatetabheightratio)
         .onReceive(Usermodel.Timereveryonesecond, perform: Usermodel.SimulationImageRefreshCountdown)
-        
     }
+    
+    
 }
 
-
-
-struct SquarewaveDRextraView_Previews: PreviewProvider {
-    static var previews: some View {
-        SquarewaveDRextraView()
-    }
-}
